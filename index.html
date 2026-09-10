@@ -1,173 +1,182 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Macias | IT Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Mario Macias | IT Support & Systems</title>
+    <meta name="description" content="Portfolio of Mario Macias: Junior IT professional focused on IT Support, Systems Administration, and Infrastructure.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fira Code solo para acentos, Inter para legibilidad profesional -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navbar Premium (Efecto Cristal) -->
-    <nav class="floating-nav">
-        <div class="nav-brand">
-            <div class="logo" style="margin: 0;">
-                <span id="logo-mario"></span><span id="logo-macias" class="text-neon"></span><span class="cursor" id="logo-cursor">█</span>
-            </div>
-        </div>
-
-        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-            <span></span><span></span><span></span>
-        </button>
-
-        <ul class="nav-links" id="navLinks">
-            <li>
-                <a href="#about">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    About me
-                </a>
-            </li>
-            <li>
-                <a href="experiencia.html">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                    Experience
-                </a>
-            </li>
-            <li>
-                <a href="#terminal-card" class="btn-cyan">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5v4H3v6h2v2h2v2h2v2h2v2h2v-2h2v-2h2v-2h2v-2h2V7h-2V3h-4v4h-4V3z" fill="currentColor"/></svg>
-                    Gratitude
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <header class="site-header">
+        <nav class="navbar container">
+            <div class="logo">mario_macias<span class="cursor">_</span></div>
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact" class="btn-primary">Connect</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <span class="status-pill" aria-label="Availability status">
-                <span class="status-dot"></span>
-                IT / Support and Network · Dublin, IE
-            </span>
+        <!-- HERO SECTION -->
+        <section class="hero text-left" id="hero">
+            <div class="status-pill">
+                <span class="status-dot"></span> Dublin, Ireland
+            </div>
+            
+            <h1 class="hero-title">Mario Macias</h1>
+            <h2 class="hero-subtitle">IT Support / Systems / Infrastructure</h2>
+            <p class="hero-text">I am building my career in IT through hands-on experience, technical projects, and continuous learning.</p>
+            
+            <div class="action-group">
+                <a href="#journey" class="btn-primary">Read my Journey</a>
+                <a href="assets/docs/CV_Mario_Macias.pdf" class="btn-outline" download>Download Letter</a>
+            </div>
         </section>
 
-        <!-- Bento Grid 3D -->
-        <section class="bento-grid">
+        <div class="bento-grid">
 
-            <!-- 1. About -->
-            <div class="bento-card card-about" id="about">
-                <div class="card-content layout-split">
-                    <!-- AQUI VA EL BLOQUE NUEVO CORRECTAMENTE POSICIONADO -->
-                    <div class="text-block">
-                        <h2 style="margin-bottom: 25px;">&gt; Hello, I'm Mario.</h2>
-                        <p class="text-muted" style="margin-bottom: 20px; line-height: 1.7;">
-                            <strong>Highly motivated Junior IT Professional</strong> based in Dublin. I don't just study IT; I build, break, and fix things daily in my Home Lab. I am looking for my first full-time Helpdesk or Junior SysAdmin role to prove my value.
-                        </p>
-                        <ul class="bullet-list" style="margin-bottom: 25px;">
-                            <li style="margin-bottom: 12px; line-height: 1.5;"><strong>Hands-on Learner:</strong> Actively preparing for Azure AZ-900 while running my own AD/DNS environments at home.</li>
-                            <li style="margin-bottom: 12px; line-height: 1.5;"><strong>Hardware & Physical IT:</strong> Experience in physical installations, rack setups, and hardware deployment.</li>
-                            <li style="margin-bottom: 12px; line-height: 1.5;"><strong>Built for Support:</strong> 2+ years handling high-pressure customer service, translating perfectly into IT SLA management and user support.</li>
-                        </ul>
-                        <a href="experiencia.html" class="exp-toggle" style="background: rgba(0, 255, 65, 0.1);">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>
-                            See my IT Journey & Labs
-                            <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-                        </a>
-                    </div>
-                    <div class="img-block">
-                        <img src="assets/img/paris.jpg" alt="Mario in Paris" class="obj-pecho">
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2. CV & Avatar (sidebar) -->
-            <div class="bento-card card-cv" id="cv">
-                <div class="card-content flex-center" style="justify-content: flex-start; padding-top: 0;">
-                    <img src="assets/img/avatar.png" alt="Mario Macias avatar" class="avatar">
-                    <h2 class="cv-title">&gt; Mario_Cv</h2>
-                    <ul class="bullet-list clean-list" style="margin-bottom: 15px; width: 100%;">
-                        <li><strong>Network:</strong> DNS, DHCP, Web Service</li>
-                        <li><strong>Support:</strong> Configuration &amp; Support</li>
-                        <li><strong>SysAdmin:</strong> Microsoft 365 &amp; Deployment</li>
-                    </ul>
-                    <a href="assets/docs/CV_Mario_Macias.pdf" class="btn-cyan download-btn" download>Download PDF</a>
-
-                    <div class="social-row" aria-label="Social links">
-                        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram profile">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
-                        </a>
-                        <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub profile">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.65 1.24 3.3.94.1-.73.4-1.24.72-1.52-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.19-1.47 3.15-1.16 3.15-1.16.62 1.57.23 2.73.11 3.02.73.79 1.16 1.8 1.16 3.04 0 4.35-2.65 5.31-5.18 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
-                        </a>
-                        <a href="mailto:marioo.maciaas@gmail.com" aria-label="Send an email">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. Offline Mode & Terminal Central -->
-            <div class="bento-card card-offline" id="terminal-card">
-                <div class="card-content layout-split" style="align-items: flex-start;">
-                    <div class="text-block" style="flex: 1.2;">
-                        <h2 class="text-neon">&gt; Offline_Mode</h2>
-                        <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
-                        <a href="vida.html" class="exp-toggle" style="margin-top: 15px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            Know more about me
-                            <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-                        </a>
-                    </div>
-                    
-                    <div class="terminal-block" style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-left: 20px; border-left: 1px solid rgba(0,255,65,0.2); padding-top: 5px;">
-                        <div class="boot-sequence" id="bootSequence">
-                            <p class="boot-line typing" id="bootTerminal"></p>
+            <!-- WHO I AM -->
+            <div class="bento-card" id="about" style="grid-column: span 6;">
+                <div class="card-content text-left">
+                    <h2 class="section-title">Who_I_Am</h2>
+                    <div class="content-wrapper">
+                        <p class="text-muted">Hi, I'm Mario — if you are reading this, you are in my portfolio. I'm currently studying Systems and Network Administration, and I built this space to document the projects, experience, and knowledge that make up who I am and what I do in IT.</p>
+                        <p class="text-muted">A year and a half ago I left Spain to build a new life in Dublin, on my own. That decision shapes how I approach everything here — with patience, curiosity, and the will to keep improving.</p>
+                        <div style="margin-top: 25px;">
+                            <a href="assets/docs/Cover_Letter_Mario_Macias.pdf" target="_blank" rel="noopener noreferrer" class="btn-outline">Want to know more about me, offline? →</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. Hobbies List -->
-            <div class="bento-card card-list">
-                <div class="card-content flex-center" style="justify-content: flex-start; align-items: flex-start; padding-left: 40px;">
-                    <h2 class="text-neon">&gt; Hobbies</h2>
-                    <ul class="bullet-list offline-list">
-                        <li>Trail running &amp; hiking</li>
-                        <li>Travel photography</li>
-                        <li>Local IT / dev meetups</li>
-                        <li>Home-lab experiments</li>
-                    </ul>
-                </div>
-            </div>
+            <!-- THE EXPERIENCE -->
+            <div class="bento-card" id="journey" style="grid-column: span 6;">
+                <div class="card-content text-left">
+                    <h2 class="section-title">The_Experience</h2>
+                    <div class="content-wrapper">
+                        <p class="text-muted">After listening to advice to build a portfolio, and everything Juan taught me along the way, I put together this space to document my <strong>Esmark Trial</strong> — three days of hands-on experience at <a href="https://vehicleengineering.ie" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">vehicleengineering.ie</a>, where I got to meet the team, see the facilities, and work with real enterprise infrastructure for the first time.</p>
+                        <p class="text-muted">During those three days I got a first look at how things really work from the inside. Here's what I picked up along the way:</p>
+                        
+                        <div class="split-grid">
+                            <div>
+                                <h3 class="sub-heading">Hands on & Executed:</h3>
+                                <ul class="bullet-list">
+                                    <li>Remote assistance via RustDesk</li>
+                                    <li>User account & password creation in Microsoft 365 Business</li>
+                                    <li>LTE, WiFi & GPS cabling on an R1900 antenna</li>
+                                    <li>Lenovo endpoint reset for a digital Kiosk demo</li>
+                                    <li>CMD, Node.js/npm, and HTML/CSS/JS fundamentals in VS Code</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="sub-heading">Observed & Supported:</h3>
+                                <ul class="bullet-list">
+                                    <li>Helped Logistics troubleshoot a printer language error, guiding the user through the fix</li>
+                                    <li>Navigated Microsoft Dynamics 365 Business Central</li>
+                                    <li>IAM protocols and enterprise network structures</li>
+                                    <li>Listened and learned about the company's goals and infrastructure approach</li>
+                                </ul>
+                            </div>
+                        </div>
 
-            <!-- 5. Foto Montaña -->
-            <div class="bento-card img-card card-photo1">
-                <div class="card-content flex-center">
-                    <img src="assets/img/montana.jpg" alt="Mountains" class="obj-center">
-                    <div class="overlay-text">Outdoors</div>
-                </div>
-            </div>
-
-            <!-- 6. Correo & Back to Top -->
-            <div class="bento-card card-contact">
-                <div class="card-content flex-center" style="justify-content: center; height: 100%;">
-                    <a href="mailto:marioo.maciaas@gmail.com" class="btn-cyan download-btn" style="margin: 0; padding: 12px 20px;">marioo.maciaas@gmail.com</a>
-                    <div style="margin-top: 25px;">
-                        <a href="#" class="back-to-top">&uarr; Back to top</a>
+                        <h2 class="section-title" style="margin-top: 40px;">What the trial taught me</h2>
+                        <p class="text-muted">Beyond the tools and software, these three days were my first real look at how a technology company with big ambitions runs day to day:</p>
+                        <ul class="bullet-list">
+                            <li>Seeing, for the first time, how work really gets done in a tech company with big goals.</li>
+                            <li>Learning to document my work, ask the right questions, and take suggestions on board.</li>
+                            <li>Stepping outside my comfort zone to look for something new — a mindset, not just a skill.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- 7. Foto Dublín -->
-            <div class="bento-card img-card card-photo2">
-                <div class="card-content flex-center">
-                    <img src="assets/img/dublin.jpg" alt="Dublin" class="obj-center">
-                    <div class="overlay-text">Dublin</div>
+            <!-- GRATITUDE -->
+            <div class="bento-card gratitude-card" style="grid-column: span 6;">
+                <div class="card-content text-left">
+                    <h2 class="section-title">Acknowledgments</h2>
+                    <p class="text-main gratitude-text">
+                        A special thank you to <strong>Juan</strong> and the entire <strong>Esmark team</strong> for their time, patience, and for sharing their knowledge and facilities with me during this trial. It has been an invaluable learning experience that has solidified my determination to build a career in this industry.
+                    </p>
+                    <p class="text-main gratitude-text" style="margin-top: 18px;">
+                        Every morning before starting, the team had a simple line that stuck with me: <em>"You are not tired to improve?"</em> I think that's genuinely the point of life: stepping outside your comfort zone, learning, and pushing forward to get a little better every day. This portfolio is my professional space, but it's a mindset I try to carry everywhere.
+                    </p>
+                    <p class="text-main gratitude-text" style="margin-top: 18px;">
+                        If you are looking for someone who shows up ready to learn, ask questions, and put in the work — I welcome the chance to prove it.
+                    </p>
                 </div>
             </div>
 
-        </section>
+            <!-- SKILLS -->
+            <div class="bento-card" id="skills" style="grid-column: span 6;">
+                <div class="card-content text-left">
+                    <h2 class="section-title">Technical_Competencies</h2>
+                    <div class="skills-grid">
+                        <div>
+                            <h3 class="sub-heading">IT Support</h3>
+                            <ul class="clean-list">
+                                <li>Hardware & Software</li>
+                                <li>Remote Support</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="sub-heading">Systems</h3>
+                            <ul class="clean-list">
+                                <li>Windows Client/Server</li>
+                                <li>Microsoft 365</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="sub-heading">Networking & Cloud</h3>
+                            <ul class="clean-list">
+                                <li>TCP/IP, DNS, DHCP</li>
+                                <li>Azure Fundamentals</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="bento-card contact-card" id="contact" style="grid-column: span 6;">
+                <div class="card-content flex-center text-left">
+                    <h2 class="section-title">System_Status: Ready</h2>
+                    <p class="text-muted status-text">
+                        My current objective is to integrate into an IT Support or Infrastructure team in Dublin, where I can contribute my baseline knowledge, troubleshoot effectively, and continue expanding my technical skill set.
+                    </p>
+                    
+                    <div class="social-row">
+                        <a href="mailto:marioo.maciaas@gmail.com" aria-label="Send Email" class="social-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="https://github.com/marioomacias" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.65 1.24 3.3.94.1-.73.4-1.24.72-1.52-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.19-1.47 3.15-1.16 3.15-1.16.62 1.57.23 2.73.11 3.02.73.79 1.16 1.8 1.16 3.04 0 4.35-2.65 5.31-5.18 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Mario Macias. Building the foundation.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
