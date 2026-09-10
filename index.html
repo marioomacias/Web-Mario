@@ -1,172 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Macias | IT Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Navbar Premium (Efecto Cristal) -->
-    <nav class="floating-nav">
-        <div class="nav-brand">
-            <div class="logo" style="margin: 0;">
-                <span id="logo-mario"></span><span id="logo-macias" class="text-neon"></span><span class="cursor" id="logo-cursor">█</span>
-            </div>
-        </div>
-
-        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-            <span></span><span></span><span></span>
-        </button>
-
-        <ul class="nav-links" id="navLinks">
-            <li>
-                <a href="#about">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                    About me
-                </a>
-            </li>
-            <li>
-                <a href="experiencia.html">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                    Experience
-                </a>
-            </li>
-            <li>
-                <a href="#terminal-card" class="btn-cyan">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5v4H3v6h2v2h2v2h2v2h2v2h2v-2h2v-2h2v-2h2v-2h2V7h-2V3h-4v4h-4V3z" fill="currentColor"/></svg>
-                    Gratitude
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <main class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <span class="status-pill" aria-label="Availability status">
-                <span class="status-dot"></span>
-                IT / Support and Network · Dublin, IE
-            </span>
+<main class="container">
+        <!-- Hero Section con aire -->
+        <section class="hero section-spacing">
+            <h1>
+                <span id="hero-mario"></span><span id="hero-macias" class="text-neon"></span><span class="cursor" id="main-cursor">█</span>
+            </h1>
+            <p id="hero-subtitle" class="text-neon"></p>
         </section>
 
-        <!-- Bento Grid 3D -->
-        <section class="bento-grid">
-
-            <!-- 1. About -->
-            <div class="bento-card card-about" id="about">
-                <div class="card-content layout-split">
+        <section class="layout-stack">
+            
+            <!-- About: Layout 60/40 -->
+            <div class="bento-card" id="about">
+                <div class="grid-60-40">
                     <div class="text-block">
-                        <h2 style="margin-bottom: 25px;">&gt; Hello, I'm Mario.</h2>
-                        <p class="text-muted" style="margin-bottom: 20px; line-height: 1.7;">
-                            Passionate about technology, systems administration, and continuous learning. My goal is to combine infrastructure support with modern practices to create efficient solutions.
-                        </p>
-                        <ul class="bullet-list" style="margin-bottom: 25px;">
-                            <li style="margin-bottom: 12px; line-height: 1.5;">Proactive troubleshooting: understanding the architecture, not just patching symptoms.</li>
-                            <li style="margin-bottom: 12px; line-height: 1.5;">Comfortable across networking, CLI tooling and day-to-day IAM administration.</li>
-                            <li style="margin-bottom: 12px; line-height: 1.5;">Always shipping a side project or lab to keep learning hands-on.</li>
-                        </ul>
-                        <a href="experiencia.html" class="exp-toggle">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>
-                            Click here to see previous experience
-                            <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-                        </a>
+                        <h2>> Hello, I'm Mario.</h2>
+                        <p class="text-muted">Passionate about technology, systems administration, and continuous learning. My goal is to combine infrastructure support with modern practices to create efficient solutions.</p>
+                        <p class="text-muted">Proactive approach: not just fixing problems, but understanding the architecture to prevent them.</p>
                     </div>
                     <div class="img-block">
-                        <img src="assets/img/paris.jpg" alt="Mario in Paris" class="obj-pecho">
+                        <img src="assets/img/paris.jpg" alt="Mario in Paris">
                     </div>
                 </div>
             </div>
 
-            <!-- 2. CV & Avatar (sidebar) -->
-            <div class="bento-card card-cv" id="cv">
-                <div class="card-content flex-center" style="justify-content: flex-start; padding-top: 0;">
-                    <img src="assets/img/avatar.png" alt="Mario Macias avatar" class="avatar">
-                    <h2 class="cv-title">&gt; Mario_Cv</h2>
-                    <ul class="bullet-list clean-list" style="margin-bottom: 15px; width: 100%;">
-                        <li><strong>Network:</strong> DNS, DHCP, Web Service</li>
-                        <li><strong>Support:</strong> Configuration &amp; Support</li>
-                        <li><strong>SysAdmin:</strong> Microsoft 365 &amp; Deployment</li>
-                    </ul>
-                    <a href="assets/docs/CV_Mario_Macias.pdf" class="btn-cyan download-btn" download>Download PDF</a>
-
-                    <div class="social-row" aria-label="Social links">
-                        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram profile">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
-                        </a>
-                        <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub profile">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.65 1.24 3.3.94.1-.73.4-1.24.72-1.52-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.19-1.47 3.15-1.16 3.15-1.16.62 1.57.23 2.73.11 3.02.73.79 1.16 1.8 1.16 3.04 0 4.35-2.65 5.31-5.18 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
-                        </a>
-                        <a href="mailto:marioo.maciaas@gmail.com" aria-label="Send an email">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-                        </a>
+            <!-- CV & Avatar: Layout 40/60 -->
+            <div class="bento-card" id="cv">
+                <div class="grid-40-60">
+                    <div class="img-block flex-center">
+                        <img src="assets/img/avatar.png" alt="Avatar 3D" class="avatar">
+                    </div>
+                    <div class="text-block">
+                        <h2>> CV_Profile</h2>
+                        <ul class="clean-list">
+                            <li><strong>Networking:</strong> Routing, TLS/SSL.</li>
+                            <li><strong>CLI:</strong> Bash, CMD scripts.</li>
+                            <li><strong>SysAdmin:</strong> Hardware, IAM.</li>
+                        </ul>
+                        <a href="assets/docs/CV_Mario_Macias.pdf" class="btn-cyan download-btn" download>Download PDF</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Offline Mode & Terminal Central -->
-            <div class="bento-card card-offline" id="terminal-card">
-                <div class="card-content layout-split" style="align-items: flex-start;">
-                    <div class="text-block" style="flex: 1.2;">
-                        <h2 class="text-neon">&gt; Offline_Mode</h2>
-                        <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
-                        <a href="vida.html" class="exp-toggle" style="margin-top: 15px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            Know more about me
-                            <svg class="exp-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg>
-                        </a>
+            <!-- Adventures: Texto alineado con Galería -->
+            <div class="bento-card" id="adventures">
+                <div class="grid-40-60">
+                    <div class="text-block">
+                        <h2 class="text-neon">> Offline_Mode</h2>
+                        <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT. Exploring the unknown.</p>
                     </div>
-                    
-                    <div class="terminal-block" style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-left: 20px; border-left: 1px solid rgba(0,255,65,0.2); padding-top: 5px;">
-                        <div class="boot-sequence" id="bootSequence">
-                            <p class="boot-line typing" id="bootTerminal"></p>
-                        </div>
+                    <div class="inner-gallery">
+                        <div class="img-card"><img src="assets/img/montana.jpg" alt="Mountains"></div>
+                        <div class="img-card"><img src="assets/img/dublin.jpg" alt="Dublin"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. Hobbies List -->
-            <div class="bento-card card-list">
-                <div class="card-content flex-center" style="justify-content: flex-start; align-items: flex-start; padding-left: 40px;">
-                    <h2 class="text-neon">&gt; Hobbies</h2>
-                    <ul class="bullet-list offline-list">
-                        <li>Trail running &amp; hiking</li>
-                        <li>Travel photography</li>
-                        <li>Local IT / dev meetups</li>
-                        <li>Home-lab experiments</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 5. Foto Montaña -->
-            <div class="bento-card img-card card-photo1">
-                <div class="card-content flex-center">
-                    <img src="assets/img/montana.jpg" alt="Mountains" class="obj-center">
-                    <div class="overlay-text">Outdoors</div>
-                </div>
-            </div>
-
-            <!-- 6. Correo & Back to Top -->
-            <div class="bento-card card-contact">
-                <div class="card-content flex-center" style="justify-content: center; height: 100%;">
-                    <a href="mailto:marioo.maciaas@gmail.com" class="btn-cyan download-btn" style="margin: 0; padding: 12px 20px;">marioo.maciaas@gmail.com</a>
-                    <div style="margin-top: 25px;">
-                        <a href="#" class="back-to-top">&uarr; Back to top</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 7. Foto Dublín -->
-            <div class="bento-card img-card card-photo2">
-                <div class="card-content flex-center">
-                    <img src="assets/img/dublin.jpg" alt="Dublin" class="obj-center">
-                    <div class="overlay-text">Dublin</div>
+            <!-- Footer: Centrado absoluto -->
+            <div class="bento-card" id="gratitude">
+                <div class="footer-layout">
+                    <h2>> System.exit(0)</h2>
+                    <p class="text-muted">Thank you for visiting my digital space. Always ready for the next challenge.</p>
+                    <a href="mailto:marioo.maciaas@gmail.com" class="btn-cyan download-btn">marioo.maciaas@gmail.com</a>
                 </div>
             </div>
 
         </section>
     </main>
-    <script src="script.js"></script>
-</body>
-</html>
