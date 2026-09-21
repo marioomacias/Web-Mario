@@ -122,8 +122,20 @@ body::before {
 .clean-list li { border-left: 1px solid var(--border); padding-left: 15px; margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem; }
 .tag { font-size: 0.7rem; background-color: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 2px 6px; border-radius: 3px; color: var(--accent); margin-left: 8px; font-family: 'Fira Code', monospace; }
 
+/* DOS FUNCIONES EN ESMARK: IT SUPPORT vs FITTER */
+.role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 25px; margin-bottom: 15px; }
+.role-panel { background: rgba(255,255,255,0.015); border: 1px solid var(--border); border-radius: 6px; padding: 22px; }
+.role-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+.role-header .sub-heading { margin-bottom: 0; }
+.role-dates { font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--accent); white-space: nowrap; }
+.role-panel .bullet-list { margin-bottom: 0; }
+.role-panel .bullet-list li:last-child { margin-bottom: 0; }
+
 /* CONTACTO */
-.status-text { max-width: 600px; margin-bottom: 25px; font-size: 1rem; line-height: 1.6; }
+/* flex-direction: column es lo que faltaba aquí — sin ella, el título, el texto y
+   los iconos intentaban colocarse en fila y todo quedaba apretado/solapado. */
+.flex-center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+.status-text { max-width: 600px; margin-bottom: 0; font-size: 1rem; line-height: 1.6; }
 .social-row { display: flex; gap: 15px; }
 .social-icon {
     display: flex; justify-content: center; align-items: center;
@@ -135,8 +147,19 @@ body::before {
 /* FOOTER */
 .site-footer { text-align: center; padding: 30px 0; border-top: 1px solid var(--border); margin-top: 40px; color: var(--text-muted); font-size: 0.85rem; }
 
+/* RESPONSIVE */
+.menu-toggle { display: none; }
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
+    .menu-toggle span { width: 24px; height: 2px; background: var(--text-main); }
+    .nav-links { display: none; }
+    .bento-card { grid-column: span 6 !important; padding: 25px; }
+    .layout-split { flex-direction: column; align-items: flex-start; }
+    .role-header { flex-direction: column; align-items: flex-start; }
+}
+
 /* ========================================= */
-/* --- EXPERIENCE & LABS (sub-página, acento cian) --- */
+/* --- PÁGINA "ABOUT / OFFLINE" (acento cian) --- */
 /* ========================================= */
 .card-title {
     font-family: 'Fira Code', monospace; font-size: 1.3rem; margin-bottom: 15px;
@@ -145,17 +168,19 @@ body::before {
 .layout-split { display: flex; gap: 30px; align-items: center; flex-wrap: wrap; }
 .text-block { flex: 1 1 280px; }
 .img-block { flex: 1 1 200px; }
-.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-center.text-center { text-align: center; }
+.text-center { text-align: center; }
 
-.cube-container { perspective: 800px; width: 120px; height: 120px; }
+/* Cubo giratorio 3D — decorativo, vive en about.html */
+.cube-container { perspective: 800px; width: 120px; height: 120px; margin: 0 auto; }
 .cube {
     width: 120px; height: 120px; position: relative;
     transform-style: preserve-3d; animation: spinCube 12s infinite linear;
 }
 .face {
     position: absolute; width: 120px; height: 120px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Fira Code', monospace; font-size: 0.85rem; font-weight: 500;
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px;
+    font-family: 'Fira Code', monospace; font-size: 0.78rem; font-weight: 500;
     background: rgba(0, 229, 255, 0.06); border: 1px solid var(--neon); color: var(--neon);
 }
 .face.front  { transform: translateZ(60px); }
@@ -168,13 +193,36 @@ body::before {
     from { transform: rotateX(0deg) rotateY(0deg); }
     to   { transform: rotateX(360deg) rotateY(360deg); }
 }
-
-/* RESPONSIVE */
-.menu-toggle { display: none; }
-@media (max-width: 768px) {
-    .menu-toggle { display: flex; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
-    .menu-toggle span { width: 24px; height: 2px; background: var(--text-main); }
-    .nav-links { display: none; }
-    .bento-card { grid-column: span 6 !important; padding: 25px; }
-    .layout-split { flex-direction: column; align-items: flex-start; }
+@media (prefers-reduced-motion: reduce) {
+    .cube { animation: none; }
 }
+
+/* Bloques "decrypt" hover (System_Attributes) — antes no tenían ningún estilo */
+.decrypt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 10px; }
+.decrypt-box {
+    position: relative; overflow: hidden; height: 64px;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center; cursor: default;
+    transition: border-color 0.25s;
+}
+.decrypt-box:hover { border-color: var(--neon); }
+.decrypt-box .encrypted {
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-muted);
+    transition: opacity 0.25s;
+}
+.decrypt-box .decrypted {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 500; color: var(--neon);
+    background: var(--card-bg); opacity: 0; transition: opacity 0.25s;
+}
+.decrypt-box:hover .encrypted { opacity: 0; }
+.decrypt-box:hover .decrypted { opacity: 1; }
+
+/* Galería de fotos (maratones) */
+.photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px; }
+.photo-frame { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; background: var(--card-bg); }
+.photo-frame img { display: block; width: 100%; height: 200px; object-fit: cover; }
+.photo-caption { padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--border); }
+
+/* Fila de enlaces personales (IG) en about.html */
+.personal-links { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
