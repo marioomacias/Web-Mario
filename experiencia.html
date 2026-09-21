@@ -4,24 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Macias | Offline Mode</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <main class="container" style="padding-top: 60px;">
-        
-        <div style="margin-bottom: 40px;">
+
+        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
             <a href="index.html" class="btn-cyan">&larr; Back to Main Interface</a>
+            <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Personal Mode</span>
         </div>
 
         <div class="bento-grid" style="grid-template-columns: 1fr;">
-            
+
+            <!-- Intro: por qué existe esta página -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div class="layout-split">
+                        <div class="text-block">
+                            <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
+                            <p class="text-muted" style="margin-top: 12px;">The main page is my professional profile. This one is the rest of me — where I moved from, why Dublin, and what I do when I'm not troubleshooting a network. Still me, just off the clock.</p>
+                        </div>
+                        <div class="img-block">
+                            <div class="cube-container">
+                                <div class="cube">
+                                    <div class="face front">Dublin</div>
+                                    <div class="face back">IT</div>
+                                    <div class="face right">Marathons</div>
+                                    <div class="face left">Consistency</div>
+                                    <div class="face top">Curiosity</div>
+                                    <div class="face bottom">Growth</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Why Dublin / Personal Journey -->
             <div class="bento-card">
                 <div class="card-content">
                     <h2><span class="text-neon">🇮🇪</span> &gt; The_Dublin_Leap</h2>
-                    <p class="text-muted">A year and a half ago, I made one of the most defining decisions of my life: moving from Spain to Ireland completely on my own.</p>
-                    <p class="text-muted">Building a life from scratch in a new country, mastering a different language, and achieving independence at an early age taught me true resilience. Dublin is a major European tech hub, and I chose to establish my roots here to surround myself with industry leaders and build a long-term IT career.</p>
+                    <p class="text-muted" style="margin-top: 12px;">A year and a half ago, I made one of the most defining decisions of my life: moving from Spain to Ireland completely on my own.</p>
+                    <p class="text-muted" style="margin-top: 12px;">Building a life from scratch in a new country, mastering a different language, and achieving independence at an early age taught me true resilience. Dublin is a major European tech hub, and I chose to establish my roots here to surround myself with industry leaders and build a long-term IT career.</p>
                 </div>
             </div>
 
@@ -29,11 +56,28 @@
             <div class="bento-card">
                 <div class="card-content">
                     <h2><span class="text-neon">🏃‍♂️</span> &gt; Marathons_&_Discipline</h2>
-                    <p class="text-muted">Technical skills can be learned, but attitude, dedication, and consistency are what truly make the difference. Endurance sports translate directly to how I handle professional challenges.</p>
-                    <ul class="bullet-list">
+                    <p class="text-muted" style="margin-top: 12px;">Technical skills can be learned, but attitude, dedication, and consistency are what truly make the difference. Endurance sports translate directly to how I handle professional challenges.</p>
+                    <ul class="bullet-list" style="margin-top: 15px;">
                         <li><strong>Consistency:</strong> Long-term goals are achieved through daily, methodical execution.</li>
                         <li><strong>Resilience:</strong> Pushing past the "wall" at kilometer 30 builds the same mental toughness needed to troubleshoot critical infrastructure issues under pressure.</li>
                     </ul>
+
+                    <!-- Galería de fotos: sustituye los src de abajo por tus fotos reales
+                         (por ejemplo en assets/images/marathons/) -->
+                    <div class="photo-gallery">
+                        <div class="photo-frame">
+                            <img src="assets/images/marathons/race-1.jpg" alt="Mario running a marathon" loading="lazy">
+                            <p class="photo-caption">// add caption — e.g. Dublin Marathon 2026</p>
+                        </div>
+                        <div class="photo-frame">
+                            <img src="assets/images/marathons/race-2.jpg" alt="Mario at the finish line" loading="lazy">
+                            <p class="photo-caption">// add caption</p>
+                        </div>
+                        <div class="photo-frame">
+                            <img src="assets/images/marathons/race-3.jpg" alt="Mario in training" loading="lazy">
+                            <p class="photo-caption">// add caption</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -41,8 +85,8 @@
             <div class="bento-card">
                 <div class="card-content text-center">
                     <h2><span class="text-neon">🧠</span> &gt; System_Attributes</h2>
-                    <p class="text-muted" style="margin-bottom: 25px;">Hover over the encrypted blocks below to decrypt core soft skills.</p>
-                    
+                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 5px;">Hover over the encrypted blocks below to decrypt core soft skills.</p>
+
                     <div class="decrypt-grid">
                         <div class="decrypt-box">
                             <span class="encrypted">01000001</span>
@@ -60,6 +104,18 @@
                             <span class="encrypted">10011001</span>
                             <span class="decrypted">Troubleshooting</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal social -->
+            <div class="bento-card">
+                <div class="card-content text-center">
+                    <h2><span class="text-neon">📷</span> &gt; Off_The_Clock</h2>
+                    <p class="text-muted" style="margin-top: 12px;">Races, training blocks, and day-to-day life in Dublin — mostly documented here:</p>
+                    <div class="personal-links" style="justify-content: center;">
+                        <!-- Reemplaza el href por tu usuario real de Instagram -->
+                        <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="btn-cyan">Instagram &rarr;</a>
                     </div>
                 </div>
             </div>
