@@ -119,11 +119,7 @@
             margin-top: 20px;
         }
         
-        .offline-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .offline-text { display: flex; flex-direction: column; justify-content: center; }
 
         .offline-list .bullet-list { 
             margin: 0; 
@@ -147,8 +143,8 @@
             border: 1px solid var(--border);
             overflow: hidden;
             width: 100%;
-            height: 220px; /* Un poco más alto para mejor proporción */
-            display: flex; /* Evita márgenes fantasma debajo de la imagen */
+            height: 320px; /* Altura ampliada para encuadrar el cuerpo entero */
+            display: flex; 
         }
         
         .photo-with-badge img {
@@ -156,7 +152,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover; 
-            object-position: center 75%; /* MAGIA: Baja el encuadre para que se vea perfectamente al chico */
+            object-position: center 75%; /* Ajuste perfecto para evitar cortar la cabeza y enfocar el cuerpo */
             filter: brightness(0.9);
             transition: filter 0.3s ease, transform 0.5s ease;
         }
@@ -204,15 +200,22 @@
         }
         .gratitude-text { font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; }
 
-        /* CONTACTO */
+        /* CONTACTO Y FOOTER TRANSPARENTE */
         .flex-center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+        .footer-transparent { 
+            grid-column: span 6; 
+            text-align: center; 
+            padding: 40px 20px; 
+            border-top: 1px dashed var(--border); 
+            margin-top: 20px; 
+        }
         
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .bento-card { grid-column: span 6 !important; padding: 25px; }
             .offline-grid { grid-template-columns: 1fr; gap: 20px; justify-items: start; }
-            .photo-with-badge { height: 250px; }
+            .photo-with-badge { height: 280px; }
         }
     </style>
 </head>
@@ -365,17 +368,15 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN SYSTEM.EXIT(0) -->
-            <div class="bento-card" style="grid-column: span 6; text-align: center;">
-                <div class="card-content flex-center">
-                    <h2 class="section-title">System.exit(0)</h2>
-                    <p class="text-muted" style="margin-bottom: 20px;">Thank you for visiting my digital space. Always ready for the next challenge.</p>
-                    
-                    <a href="mailto:marioo.maciaas@gmail.com" class="btn-primary" style="padding: 10px 24px; font-size: 1rem;">marioo.maciaas@gmail.com</a>
-                    
-                    <div style="margin-top: 25px;">
-                        <a href="#hero" class="text-muted" style="text-decoration: none; font-size: 0.85rem; font-family: 'Fira Code', monospace;">&uarr; Back to top</a>
-                    </div>
+            <!-- SECCIÓN SYSTEM.EXIT(0) (Sin recuadro) -->
+            <div class="footer-transparent flex-center">
+                <h2 class="section-title">System.exit(0)</h2>
+                <p class="text-muted" style="margin-bottom: 20px;">Thank you for visiting my digital space. Always ready for the next challenge.</p>
+                
+                <a href="mailto:marioo.maciaas@gmail.com" class="btn-primary" style="padding: 10px 24px; font-size: 1rem;">marioo.maciaas@gmail.com</a>
+                
+                <div style="margin-top: 25px;">
+                    <a href="#hero" class="text-muted" style="text-decoration: none; font-size: 0.85rem; font-family: 'Fira Code', monospace;">&uarr; Back to top</a>
                 </div>
             </div>
 
