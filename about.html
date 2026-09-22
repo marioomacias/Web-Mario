@@ -11,23 +11,39 @@
     
     <!-- Estilos exclusivos para la página Personal / Offline -->
     <style>
-        /* Galería de Hobbies */
+        /* Ajuste de Cabecera */
+        .offline-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; margin-bottom: 40px; }
+        .offline-title-group { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .offline-title { font-size: 1.3rem; font-family: 'Fira Code', monospace; margin: 0; color: var(--text-main); }
+        .status-pill { margin: 0 !important; }
+
+        /* Layout Grid para Éire (Texto Izquierda / Foto Derecha) */
+        .layout-split { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: center; }
+        .layout-split img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        @media(max-width: 768px) { .layout-split { grid-template-columns: 1fr; } }
+
+        /* Reflexión Interactiva (El detalle único) */
+        .reflection-card { position: relative; padding: 35px; border-radius: 8px; background: linear-gradient(145deg, rgba(20,20,25,0.4) 0%, rgba(11,11,14,0.8) 100%); border: 1px solid var(--border); transition: all 0.5s ease; overflow: hidden; margin-top: 15px; }
+        .reflection-card:hover { border-color: var(--neon); box-shadow: 0 0 25px rgba(0, 229, 255, 0.08); transform: translateY(-2px); }
+        .secret-reveal { margin-top: 25px; padding-top: 20px; border-top: 1px dashed var(--border); color: var(--neon); font-family: 'Fira Code', monospace; font-size: 0.9rem; opacity: 0; transform: translateY(15px); transition: all 0.5s ease; text-align: center; }
+        .reflection-card:hover .secret-reveal { opacity: 1; transform: translateY(0); }
+
+        /* Galería de Hobbies (Reducida a 3) */
         .personal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; }
-        .personal-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); filter: grayscale(30%) brightness(0.8); transition: all 0.4s ease; cursor: crosshair; }
+        .personal-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); filter: grayscale(20%) brightness(0.9); transition: all 0.4s ease; }
         .personal-gallery img:hover { filter: grayscale(0%) brightness(1.1); transform: scale(1.02); border-color: var(--neon); z-index: 2; box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1); }
+
+        /* Logros Personales y Objetivos */
+        .milestones-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+        .milestone-badge { background: rgba(0, 229, 255, 0.04); border: 1px solid rgba(0, 229, 255, 0.2); color: var(--text-main); padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; font-family: 'Inter', sans-serif; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .milestone-badge:hover { background: rgba(0, 229, 255, 0.1); border-color: var(--neon); transform: translateY(-3px); }
         
-        /* Terminal Interactiva */
-        .terminal-box { background: #0b0b0e; border: 1px solid var(--border); border-radius: 8px; font-family: 'Fira Code', monospace; overflow: hidden; margin-top: 25px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5); }
-        .terminal-header { background: #16161d; padding: 10px 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
-        .terminal-header .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-header .red { background: #ff5f56; }
-        .terminal-header .yellow { background: #ffbd2e; }
-        .terminal-header .green { background: #27c93f; }
-        .terminal-header .title { margin-left: 10px; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 0.5px; }
-        .terminal-body { padding: 20px; font-size: 0.9rem; color: var(--text-main); line-height: 1.8; }
-        .terminal-body .prompt { color: var(--neon); margin-right: 10px; font-weight: bold; }
-        .terminal-body .output { color: #8b949e; margin-bottom: 15px; margin-left: 20px; font-size: 0.85rem; }
-        
+        .slogan-box { margin-top: 40px; text-align: center; padding: 30px 20px; background: rgba(255,255,255,0.015); border-radius: 8px; border: 1px solid var(--border); }
+        .slogan-text { font-size: 1.15rem; font-style: italic; color: var(--text-main); margin-bottom: 15px; font-weight: 300; }
+        .pending-goals { font-family: 'Fira Code', monospace; color: var(--neon); font-weight: 500; font-size: 1rem; }
+        .blink-dots { animation: blinker 1.5s infinite; }
+        @keyframes blinker { 50% { opacity: 0.2; } }
+
         /* Botón Instagram */
         .ig-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: none; }
         .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(220, 39, 67, 0.3); color: white; }
@@ -37,56 +53,55 @@
 <body>
     <main class="container" style="padding-top: 60px;">
 
-        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <!-- Cabecera Superior -->
+        <div class="offline-header">
+            <div class="offline-title-group">
+                <h1 class="offline-title">Offline_Mode</h1>
+                <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Connection: Human Mode</span>
+            </div>
             <a href="index.html" class="btn-cyan">&larr; Return to Workspace</a>
-            <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Connection: Human Mode</span>
         </div>
 
         <div class="bento-grid" style="grid-template-columns: 1fr;">
 
-            <!-- Éire Section -->
+            <!-- Éire Section con foto a la derecha -->
             <div class="bento-card">
                 <div class="card-content">
                     <h2><span class="text-neon">🇮🇪</span> &gt; Éire (Ireland)</h2>
-                    <p class="text-muted" style="margin-top: 15px; font-size: 1.05rem;">
-                        Ireland is more than just a coordinate on a map—it is the place where I forced myself to grow. Moving from Spain completely on my own was a hard reset on my life. 
-                    </p>
-                    <p class="text-muted" style="margin-top: 12px; font-size: 1.05rem;">
-                        I came here because Dublin is a leading European tech hub, and I wanted to surround myself with industry experts. But beyond the career opportunities, the challenge of building a life from scratch, mastering a second language, and navigating early independence stripped away my comfort zone. Ireland taught me that true resilience is built when you have no other choice but to adapt and thrive.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Mindset Section -->
-            <div class="bento-card">
-                <div class="card-content">
-                    <h2><span class="text-neon">🧠</span> &gt; Mindset_&_Growth</h2>
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;">
-                        <div>
-                            <p class="text-muted">If working in IT has taught me anything, it's that systems break, and you have to know how to troubleshoot them calmly. Relocating alone was my ultimate real-world troubleshooting test.</p>
-                            <p class="text-muted" style="margin-top: 12px;">I learned to be self-reliant, to adapt to continuous updates in my environment, and to embrace the fact that growth only happens when you step out of your known network.</p>
+                    <div class="layout-split" style="margin-top: 15px;">
+                        <div class="text-block">
+                            <p class="text-muted" style="font-size: 1.05rem;">
+                                Ireland is more than just a coordinate on a map—it is the place where I forced myself to grow. Moving from Spain completely on my own was a hard reset on my life. 
+                            </p>
+                            <p class="text-muted" style="margin-top: 12px; font-size: 1.05rem;">
+                                I came here because Dublin is a leading European tech hub, and I wanted to surround myself with industry experts. But beyond the career opportunities, the challenge of building a life from scratch, mastering a second language, and navigating early independence stripped away my comfort zone. Ireland taught me that true resilience is built when you have no other choice but to adapt and thrive.
+                            </p>
                         </div>
-                        
-                        <!-- Terminal Interactiva -->
-                        <div class="terminal-box">
-                            <div class="terminal-header">
-                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                                <span class="title">mario@dublin:~/mindset</span>
-                            </div>
-                            <div class="terminal-body">
-                                <div><span class="prompt">$</span> systemctl status comfort_zone</div>
-                                <div class="output">● comfort_zone.service - Offline<br>   Status: "Disconnected for growth purposes"</div>
-                                
-                                <div style="margin-top: 10px;"><span class="prompt">$</span> ./deploy_resilience.sh</div>
-                                <div class="output">Building mindset... [██████████] 100%<br>Warning: Challenges ahead. Embracing them anyway.</div>
-                            </div>
+                        <div class="img-block">
+                            <img src="assets/docs/mario_montaña.jpeg" alt="Mario en la montaña" loading="lazy">
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Hobbies & Marathons -->
+            <!-- Mindset Section (Reflexión Interactiva) -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <h2><span class="text-neon">🧠</span> &gt; The_Mindset</h2>
+                    
+                    <div class="reflection-card">
+                        <p class="text-muted" style="font-size: 1.1rem; line-height: 1.8; text-align: center; margin-bottom: 0;">
+                            "Thanks to Dublin, I have learned to be a better person, to deeply value what I have, and to understand that not everything works out on the first try. Failure isn't a dead end; it's simply data to configure the next attempt."
+                        </p>
+                        <!-- Este texto secreto aparece al pasar el ratón -->
+                        <div class="secret-reveal">
+                            // Decrypted thought: Patience. Gratitude. Resilience.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobbies & Logros -->
             <div class="bento-card">
                 <div class="card-content">
                     <h2><span class="text-neon">⛰️</span> &gt; System.restore()</h2>
@@ -97,12 +112,27 @@
                         <li><strong>The Outdoors:</strong> Whether I'm hitting the trails in the mountains or exploring cities like Paris, spending time off the grid is how I run my own personal maintenance.</li>
                     </ul>
 
-                    <!-- Galería de Hobbies con tus fotos -->
+                    <!-- Galería de Hobbies (Solo 3 fotos) -->
                     <div class="personal-gallery">
-                        <img src="assets/docs/mario_maraton.jpeg" alt="Mario corriendo un maratón" loading="lazy" title="Consistency & Endurance">
-                        <img src="assets/docs/mario_montaña.jpeg" alt="Mario en la montaña" loading="lazy" title="Disconnecting to reconnect">
-                        <img src="assets/docs/mario_paris.jpeg" alt="Mario de viaje en Paris" loading="lazy" title="Exploring the world">
-                        <img src="assets/docs/outdoors.jpeg" alt="Mario Outdoors" loading="lazy" title="System.restore()">
+                        <img src="assets/docs/mario_maraton.jpeg" alt="Mario corriendo un maratón" loading="lazy">
+                        <img src="assets/docs/mario_paris.jpeg" alt="Mario de viaje en Paris" loading="lazy">
+                        <img src="assets/docs/outdoors.jpeg" alt="Mario Outdoors" loading="lazy">
+                    </div>
+
+                    <!-- Logros Personales -->
+                    <h3 class="section-title" style="margin-top: 40px; font-size: 1.1rem; color: var(--text-main);">Personal_Milestones</h3>
+                    <div class="milestones-container">
+                        <span class="milestone-badge">🏠 Early Independence</span>
+                        <span class="milestone-badge">🏃‍♂️ 3x Half Marathons</span>
+                        <span class="milestone-badge">🏅 1x Full Marathon</span>
+                        <span class="milestone-badge">🎓 Academic Degrees</span>
+                        <span class="milestone-badge">🌍 Traveled: Vienna, Paris, Germany, Spain, Amsterdam, Malta, Italy</span>
+                    </div>
+
+                    <!-- Slogan y Objetivos Pendientes -->
+                    <div class="slogan-box">
+                        <p class="slogan-text">"The foundation is built. The discipline is set. The rest is execution."</p>
+                        <p class="pending-goals">&gt; Pending Objectives <span class="blink-dots">...</span></p>
                     </div>
                 </div>
             </div>
@@ -112,7 +142,7 @@
                 <div class="card-content" style="text-align: center; padding: 40px 20px;">
                     <h2><span class="text-neon">📡</span> &gt; Connect_Off_The_Clock</h2>
                     <p class="text-muted" style="margin-top: 12px; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                        Races, training blocks, travels, and day-to-day life in Ireland. If you want to see the human behind the IT infrastructure, let's connect.
+                        If you want to see the human behind the IT infrastructure—races, travels, and day-to-day life—let's connect.
                     </p>
                     
                     <a href="https://www.instagram.com/marioo.macias/?hl=en" target="_blank" rel="noopener noreferrer" class="ig-btn">
