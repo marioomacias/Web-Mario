@@ -15,13 +15,13 @@
         /* --- VARIABLES Y DISEÑO PROFESIONAL --- */
         /* ========================================= */
         :root {
-            --bg-color: #0b0b0e;      /* Fondo casi negro */
-            --card-bg: #121216;       /* Cartas ligeramente más claras */
-            --accent: #00ff41;        /* Verde neón */
-            --neon: #00e5ff;          /* Cian */
-            --text-main: #f1f5f9;     /* Blanco roto */
-            --text-muted: #94a3b8;    /* Gris profesional */
-            --border: #22222a;        /* Bordes sutiles */
+            --bg-color: #0b0b0e;
+            --card-bg: #121216;
+            --accent: #00ff41;
+            --neon: #00e5ff;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #22222a;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -109,23 +109,36 @@
         }
         .bento-card:hover { border-color: rgba(0, 255, 65, 0.3); }
 
-        /* OFFLINE MODE GRID (3 Columnas) */
+        /* OFFLINE MODE GRID (3 Columnas con centrado estricto) */
         .offline-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr 1.2fr; /* Columna derecha un poco más ancha para la foto */
+            grid-template-columns: 1fr 1fr 1.2fr; 
             gap: 30px;
-            align-items: center;
+            align-items: center; /* Alinea todo al centro verticalmente */
+            justify-items: center; /* Alinea los bloques en el centro horizontalmente */
             margin-top: 20px;
         }
         
-        .offline-list .bullet-list { margin-bottom: 0; }
+        .offline-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .offline-list .bullet-list { 
+            margin: 0; 
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
         
         /* Contenedor de la foto en la derecha */
         .offline-photos {
             display: flex;
-            justify-content: flex-end; /* Empuja la foto a la derecha */
-            align-items: stretch;
-            height: 100%;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
         
         .photo-with-badge {
@@ -134,14 +147,16 @@
             border: 1px solid var(--border);
             overflow: hidden;
             width: 100%;
-            height: 200px; /* Altura fija para hacer el recuadro */
+            height: 220px; /* Un poco más alto para mejor proporción */
+            display: flex; /* Evita márgenes fantasma debajo de la imagen */
         }
         
         .photo-with-badge img {
             display: block;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Asegura que la foto llene el recuadro sin deformarse */
+            object-fit: cover; 
+            object-position: center 75%; /* MAGIA: Baja el encuadre para que se vea perfectamente al chico */
             filter: brightness(0.9);
             transition: filter 0.3s ease, transform 0.5s ease;
         }
@@ -168,6 +183,7 @@
         /* LISTAS */
         .bullet-list { list-style: none; margin-bottom: 15px; }
         .bullet-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem; }
+        .bullet-list li:last-child { margin-bottom: 0; }
         .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--accent); font-family: 'Fira Code', monospace; }
 
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 20px; }
@@ -195,7 +211,7 @@
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .bento-card { grid-column: span 6 !important; padding: 25px; }
-            .offline-grid { grid-template-columns: 1fr; gap: 20px; }
+            .offline-grid { grid-template-columns: 1fr; gap: 20px; justify-items: start; }
             .photo-with-badge { height: 250px; }
         }
     </style>
