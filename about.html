@@ -3,234 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Macías | Off The Clock</title>
+    <title>Mario Macias | Offline Mode</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /*
-          Scoped styles for this page only, prefixed "pm-" so nothing collides
-          with the site-wide styles.css. Deep-space navy + electric blue neon,
-          laid out as a dense 2-column grid instead of a connecting line —
-          the km markers now live as corner tags on each panel.
-        */
-
-        :root {
-            --pm-accent: #3ea6ff;
-            --pm-accent-soft: rgba(62, 166, 255, 0.18);
-            --pm-deep: #05070d;
-        }
-
-        .pm-page {
-            background: radial-gradient(ellipse 900px 500px at 12% 0%, rgba(62, 166, 255, 0.08), transparent 60%),
-                        radial-gradient(ellipse 700px 500px at 100% 30%, rgba(62, 166, 255, 0.06), transparent 55%);
-        }
-
-        .pm-page .btn-cyan {
-            border-color: var(--pm-accent) !important;
-            color: var(--pm-accent) !important;
-        }
-        .pm-page .status-pill { border-color: var(--pm-accent-soft) !important; }
-        .pm-page .status-dot {
-            background: var(--pm-accent) !important;
-            box-shadow: 0 0 8px var(--pm-accent) !important;
-        }
-
-        .pm-route {
-            position: relative;
-            border-radius: 32px;
-            padding: clamp(24px, 4vw, 48px);
-            margin-top: 12px;
-            background:
-                radial-gradient(circle at 18% 12%, rgba(62, 166, 255, 0.12), transparent 45%),
-                radial-gradient(circle at 88% 90%, rgba(62, 166, 255, 0.10), transparent 50%),
-                linear-gradient(180deg, #070a14, var(--pm-deep));
-            box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5), 0 30px 60px rgba(0, 0, 0, 0.4);
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 26px;
-        }
-
-        .pm-full { grid-column: 1 / -1; }
-
-        .pm-panel {
-            position: relative;
-            background: linear-gradient(160deg, rgba(30, 46, 82, 0.55), rgba(5, 7, 13, 0.92));
-            border: 1px solid rgba(62, 166, 255, 0.22);
-            border-radius: 26px 10px 26px 10px;
-            padding: 32px 28px 26px;
-            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45), inset 0 0 24px rgba(62, 166, 255, 0.04);
-            transform: rotate(-0.4deg);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-        }
-        .pm-route .pm-panel:nth-child(even) {
-            border-radius: 10px 26px 10px 26px;
-            transform: rotate(0.4deg);
-        }
-        .pm-panel:hover {
-            transform: translateY(-5px) rotate(0deg);
-            box-shadow: 0 24px 46px rgba(0, 0, 0, 0.55), 0 0 30px rgba(62, 166, 255, 0.15);
-            border-color: var(--pm-accent);
-        }
-
-        .pm-marker {
-            position: absolute;
-            top: -14px;
-            left: 26px;
-            padding: 5px 14px;
-            border-radius: 999px;
-            background: var(--pm-deep);
-            border: 1px solid var(--pm-accent);
-            color: var(--pm-accent);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.65rem;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            box-shadow: 0 0 14px rgba(62, 166, 255, 0.45);
-            animation: pm-pulse 3.2s ease-in-out infinite;
-        }
-        .pm-route .pm-panel:nth-child(even) .pm-marker { left: auto; right: 26px; }
-        .pm-marker small { opacity: 0.65; margin-left: 6px; }
-
-        @keyframes pm-pulse {
-            0%, 100% { box-shadow: 0 0 10px rgba(62, 166, 255, 0.35); }
-            50%      { box-shadow: 0 0 22px rgba(62, 166, 255, 0.7); }
-        }
-
-        .pm-page .text-neon { color: var(--pm-accent); }
-
-        .pm-finish-tape {
-            text-align: center;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            color: var(--pm-accent);
-            letter-spacing: 0.02em;
-            margin-top: 26px;
-            opacity: 0.85;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .pm-marker { animation: none; }
-        }
-
-        @media (max-width: 760px) {
-            .pm-route { grid-template-columns: 1fr; gap: 40px; padding: 28px 20px; }
-            .pm-panel, .pm-route .pm-panel:nth-child(even) { transform: none; }
-        }
-    </style>
 </head>
 <body>
-    <main class="container pm-page" style="padding-top: 60px;">
+    <main class="container" style="padding-top: 60px;">
 
         <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
             <a href="index.html" class="btn-cyan">&larr; Back to Main Interface</a>
-            <span class="status-pill"><span class="status-dot"></span> Personal Mode</span>
+            <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Personal Mode</span>
         </div>
 
-        <div class="pm-route">
+        <div class="bento-grid" style="grid-template-columns: 1fr;">
 
-            <!-- KM 0 — Intro -->
-            <div class="pm-panel pm-full">
-                <span class="pm-marker">KM 0 <small>START</small></span>
-                <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
-                <p class="text-muted" style="margin-top: 12px;">The main page runs my professional build. This one is the source behind it — why Dublin, what gets me out the door before sunrise, and the parts of me a CV never has room for. Still Mario, just off the clock.</p>
-
-                <div class="terminal-widget" style="margin-top: 20px;">
-                    <div class="term-header">
-                        <span class="term-btn close"></span>
-                        <span class="term-btn min"></span>
-                        <span class="term-btn max"></span>
-                    </div>
-                    <div class="term-body">
-                        <ul class="term-list">
-                            <li><span class="text-muted">> Location:</span> Dublin, IE</li>
-                            <li><span class="text-muted">> Next_Goal:</span> 46km Trail Ultra</li>
-                            <li><span class="text-muted">> Current_State:</span> Exploring & Training</li>
-                        </ul>
-                        <p class="cursor-line"><span class="text-neon">marioo.macias</span><span class="text-muted">:~$</span> <span class="cursor">_</span></p>
+            <!-- Intro: por qué existe esta página -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <div class="layout-split">
+                        <div class="text-block">
+                            <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
+                            <p class="text-muted" style="margin-top: 12px;">The main page is my professional profile. This one is the rest of me — where I moved from, why Dublin, and what I do when I'm not troubleshooting a network. Still me, just off the clock.</p>
+                        </div>
+                            <div class="terminal-widget">
+    <div class="term-header">
+        <span class="term-btn close"></span>
+        <span class="term-btn min"></span>
+        <span class="term-btn max"></span>
+    </div>
+    <div class="term-body">
+        <ul class="term-list">
+            <li><span class="text-muted">> Location:</span> Dublin, IE </li>
+            <li><span class="text-muted">> Next_Goal:</span> 46km Trail </li>
+            <li><span class="text-muted">> Vibe:</span> Exploring & Training </li>
+        </ul>
+        <p class="cursor-line"><span class="text-neon">marioo.macias </span><span class="text-muted":) /span> <span class="cursor">_</span></p>
+    </div>
+</div>
+                                    <div class="face front">Dublin</div>
+                                    <div class="face back">IT</div>
+                                    <div class="face right">Marathons</div>
+                                    <div class="face left">Consistency</div>
+                                    <div class="face top">Curiosity</div>
+                                    <div class="face bottom">Growth</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KM 5 — Why Dublin -->
-            <div class="pm-panel">
-                <span class="pm-marker">KM 5</span>
-                <h2><span class="text-neon">&gt;</span> Éire</h2>
-                <p class="text-muted" style="margin-top: 12px;">A year and a half ago I made the boldest call of my life: I packed a bag and moved from Spain to Ireland completely on my own — no safety net, no contacts, no plan B.</p>
-                <p class="text-muted" style="margin-top: 12px;">Starting from zero taught me more about resilience than any manual could. I learned a new language, built a routine, and earned my independence early. I chose to put down roots in Dublin because it's one of Europe's real tech hubs.</p>
+            <!-- Why Dublin / Personal Journey -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <h2><span class="text-neon" &gt; Éire </h2>
+                    <p class="text-muted" style="margin-top: 12px;">A year and a half ago, I made one of the most defining decisions of my life: moving from Spain to Ireland completely on my own.</p>
+                    <p class="text-muted" style="margin-top: 12px;">Building a life from scratch in a new country, mastering a different language, and achieving independence at an early age taught me true resilience. Dublin is a major European tech hub, and I chose to establish my roots here to surround myself with industry leaders and build a long-term IT career.</p>
+                </div>
             </div>
 
-            <!-- KM 18 — System attributes -->
-            <div class="pm-panel text-center">
-                <span class="pm-marker">KM 18</span>
-                <h2><span class="text-neon">🧠</span> &gt; System_Attributes</h2>
-                <p class="text-muted" style="margin-top: 12px; margin-bottom: 5px;">Hover to decrypt the traits that don't show up in a job description.</p>
+            <!-- Marathons -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <h2><span class="text-neon" &gt; Marathons_&_Discipline</h2>
+                    <p class="text-muted" style="margin-top: 12px;">Technical skills can be learned, but attitude, dedication, and consistency are what truly make the difference. Endurance sports translate directly to how I handle professional challenges.</p>
+                    <ul class="bullet-list" style="margin-top: 15px;">
+                        <li><strong>Consistency:</strong> Long-term goals are achieved through daily, methodical execution.</li>
+                        <li><strong>Resilience:</strong> Pushing past the "wall" at kilometer 30 builds the same mental toughness needed to troubleshoot critical infrastructure issues under pressure.</li>
+                    </ul>
 
-                <div class="decrypt-grid">
-                    <div class="decrypt-box">
-                        <span class="encrypted">01000001</span>
-                        <span class="decrypted">Adaptability</span>
-                    </div>
-                    <div class="decrypt-box">
-                        <span class="encrypted">01110010</span>
-                        <span class="decrypted">Responsibility</span>
-                    </div>
-                    <div class="decrypt-box">
-                        <span class="encrypted">11010100</span>
-                        <span class="decrypted">Consistency</span>
-                    </div>
-                    <div class="decrypt-box">
-                        <span class="encrypted">10011001</span>
-                        <span class="decrypted">Troubleshooting</span>
+                    <!-- Galería de fotos: sustituye los src de abajo por tus fotos reales
+                         (por ejemplo en assets/images/marathons/) -->
+                    <div class="photo-gallery">
+                        <div class="photo-frame">
+                            <img src="assets/images/marathons/race-1.jpg" alt="Mario running a marathon" loading="lazy">
+                            <p class="photo-caption">// add caption — e.g. Dublin Marathon 2026</p>
+                        </div>
+                        <div class="photo-frame">
+                            <img src="assets/images/marathons/race-2.jpg" alt="Mario at the finish line" loading="lazy">
+                            <p class="photo-caption">// add caption</p>
+                        </div>
+                        <div class="photo-frame">
+                            <img src="assets/images/marathons/race-3.jpg" alt="Mario in training" loading="lazy">
+                            <p class="photo-caption">// add caption</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KM 30 — Marathons & exploring -->
-            <div class="pm-panel pm-full">
-                <span class="pm-marker">KM 30 <small>The Wall</small></span>
-                <h2><span class="text-neon">&gt;</span> Marathons_and_The_Long_Way_Round</h2>
-                <p class="text-muted" style="margin-top: 12px;">Technical skills can be taught. What can't be taught is showing up — for the early run, the long shift, the problem that doesn't get solved on the first try. Endurance sport is where I built that habit.</p>
-                <ul class="bullet-list" style="margin-top: 15px;">
-                    <li><strong>Consistency:</strong> long-term goals are won through daily, unglamorous repetition — training plans and ticket queues aren't so different.</li>
-                    <li><strong>Resilience:</strong> pushing through the wall at kilometre 30 builds the same mental toughness I rely on troubleshooting critical infrastructure under pressure.</li>
-                    <li><strong>Curiosity:</strong> every long run doubles as an excuse to explore — a new route, a new trail, a corner of Ireland I hadn't seen yet. Right now that curiosity is aimed at a 46km trail, because the flat road stopped being enough.</li>
-                </ul>
+            <!-- Interactive Section: Discover More -->
+            <div class="bento-card">
+                <div class="card-content text-center">
+                    <h2><span class="text-neon">🧠</span> &gt; System_Attributes</h2>
+                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 5px;">Hover over the encrypted blocks below to decrypt core soft skills.</p>
 
-                <!-- Photo gallery: replace the src values below with your real photos
-                     (e.g. in assets/images/marathons/) -->
-                <div class="photo-gallery" style="margin-top: 20px;">
-                    <div class="photo-frame">
-                        <img src="assets/images/marathons/race-1.jpg" alt="Mario running a marathon" loading="lazy">
-                        <p class="photo-caption">// add caption — e.g. Dublin Marathon 2026</p>
-                    </div>
-                    <div class="photo-frame">
-                        <img src="assets/images/marathons/race-2.jpg" alt="Mario at the finish line" loading="lazy">
-                        <p class="photo-caption">// add caption</p>
-                    </div>
-                    <div class="photo-frame">
-                        <img src="assets/images/marathons/race-3.jpg" alt="Mario in training" loading="lazy">
-                        <p class="photo-caption">// add caption</p>
+                    <div class="decrypt-grid">
+                        <div class="decrypt-box">
+                            <span class="encrypted">01000001</span>
+                            <span class="decrypted">Adaptability</span>
+                        </div>
+                        <div class="decrypt-box">
+                            <span class="encrypted">01110010</span>
+                            <span class="decrypted">Responsibility</span>
+                        </div>
+                        <div class="decrypt-box">
+                            <span class="encrypted">11010100</span>
+                            <span class="decrypted">Consistency</span>
+                        </div>
+                        <div class="decrypt-box">
+                            <span class="encrypted">10011001</span>
+                            <span class="decrypted">Troubleshooting</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- KM 42 — Off the clock / social -->
-            <div class="pm-panel pm-full text-center">
-                <span class="pm-marker">KM 42 <small>Finish</small></span>
-                <h2><span class="text-neon">📷</span> &gt; Off_The_Clock</h2>
-                <p class="text-muted" style="margin-top: 12px;">Races, training blocks, and everyday life in Dublin — mostly documented one photo at a time:</p>
-                <div class="personal-links" style="justify-content: center; margin-top: 10px;">
-                    <!-- Replace the href with your real Instagram handle -->
-                    <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="btn-cyan">Instagram &rarr;</a>
+            <!-- Personal social -->
+            <div class="bento-card">
+                <div class="card-content text-center">
+                    <h2><span class="text-neon">📷</span> &gt; Off_The_Clock</h2>
+                    <p class="text-muted" style="margin-top: 12px;">Races, training blocks, and day-to-day life in Dublin — mostly documented here:</p>
+                    <div class="personal-links" style="justify-content: center;">
+                        <!-- Reemplaza el href por tu usuario real de Instagram -->
+                        <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="btn-cyan">Instagram &rarr;</a>
+                    </div>
                 </div>
             </div>
 
         </div>
-
-        <p class="pm-finish-tape">🏁 42.195 KM — Personal_Mode.exe compiled successfully</p>
-
     </main>
     <script src="script.js"></script>
 </body>
