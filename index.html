@@ -127,7 +127,7 @@
         .clean-list { list-style: none; }
         .clean-list li { border-left: 1px solid var(--border); padding-left: 15px; margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem; }
 
-        /* --- NUEVO: OFFLINE MODE GRID (3 Columnas) --- */
+        /* --- OFFLINE MODE GRID (3 Columnas con 1 sola foto) --- */
         .offline-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1.2fr;
@@ -139,7 +139,7 @@
         
         .offline-photos {
             display: flex;
-            gap: 15px;
+            justify-content: center; /* Centra la foto horizontalmente */
             align-items: center;
         }
         .photo-with-badge {
@@ -147,15 +147,14 @@
             border-radius: 8px;
             border: 1px solid var(--border);
             overflow: hidden;
-            flex: 1;
-        }
-        .offline-photos .photo-with-badge:nth-child(2) {
-            transform: translateY(-20px); /* Desfase vertical */
+            width: 100%;
+            max-width: 250px; /* Evita que la foto se haga gigante */
         }
         .photo-with-badge img {
             display: block;
             width: 100%;
-            height: 140px;
+            height: auto; /* Mantiene la proporción original de la foto */
+            aspect-ratio: 4/3; /* Le da un formato ligeramente rectangular */
             object-fit: cover;
             filter: brightness(0.9);
             transition: filter 0.3s ease;
@@ -191,7 +190,6 @@
             .nav-links { display: none; }
             .bento-card { grid-column: span 6 !important; padding: 25px; }
             .offline-grid { grid-template-columns: 1fr; gap: 20px; }
-            .offline-photos .photo-with-badge:nth-child(2) { transform: translateY(0); }
         }
     </style>
 </head>
@@ -250,16 +248,11 @@
                             </ul>
                         </div>
 
-                        <!-- Columna 3: Fotos con etiquetas flotantes -->
+                        <!-- Columna 3: Foto única centrada -->
                         <div class="offline-photos">
                             <div class="photo-with-badge">
-                                <!-- Reemplaza esto con tu foto real en la carpeta assets -->
-                                <img src="assets/images/foto-dublin.jpg" alt="Mario en Dublin">
-                                <span class="photo-badge">Dublin</span>
-                            </div>
-                            <div class="photo-with-badge">
-                                <!-- Reemplaza esto con tu foto real en la carpeta assets -->
-                                <img src="assets/images/foto-outdoors.jpg" alt="Mario Outdoors">
+                                <!-- Asegúrate de que la foto se llame outdoors.png y esté en assets/images/ -->
+                                <img src="assets/images/outdoors.png" alt="Mario Outdoors">
                                 <span class="photo-badge">Outdoors</span>
                             </div>
                         </div>
