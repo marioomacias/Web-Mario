@@ -109,24 +109,26 @@
         }
         .bento-card:hover { border-color: rgba(0, 255, 65, 0.3); }
 
-        /* OFFLINE MODE GRID (3 Columnas con centrado estricto) */
+        /* OFFLINE MODE GRID */
         .offline-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1.2fr; 
             gap: 30px;
-            align-items: center; /* Alinea todo al centro verticalmente */
-            justify-items: center; /* Alinea los bloques en el centro horizontalmente */
+            align-items: center;
+            justify-items: center;
             margin-top: 20px;
         }
         
-        .offline-text { display: flex; flex-direction: column; justify-content: center; }
+        .offline-text, .offline-list { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            height: 100%;
+        }
 
         .offline-list .bullet-list { 
             margin: 0; 
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
         
         /* Contenedor de la foto en la derecha */
@@ -143,7 +145,7 @@
             border: 1px solid var(--border);
             overflow: hidden;
             width: 100%;
-            height: 320px; /* Altura ampliada para encuadrar el cuerpo entero */
+            height: 320px; 
             display: flex; 
         }
         
@@ -152,7 +154,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover; 
-            object-position: center 75%; /* Ajuste perfecto para evitar cortar la cabeza y enfocar el cuerpo */
+            object-position: center 75%; 
             filter: brightness(0.9);
             transition: filter 0.3s ease, transform 0.5s ease;
         }
@@ -215,7 +217,7 @@
             .nav-links { display: none; }
             .bento-card { grid-column: span 6 !important; padding: 25px; }
             .offline-grid { grid-template-columns: 1fr; gap: 20px; justify-items: start; }
-            .photo-with-badge { height: 280px; }
+            .photo-with-badge { height: 250px; }
         }
     </style>
 </head>
@@ -258,7 +260,7 @@
                     <div class="offline-grid">
                         <!-- Columna 1: Texto y botón -->
                         <div class="offline-text">
-                            <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
+                            <p class="text-muted" style="margin-bottom: 0;">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
                             <div style="margin-top: 25px;">
                                 <a href="about.html" class="btn-outline">Know more about me &gt;</a>
                             </div>
@@ -272,6 +274,10 @@
                                 <li>Local IT / dev meetups</li>
                                 <li>Home-lab experiments</li>
                             </ul>
+                            <!-- TRUCO DE SIMETRÍA: Este botón es invisible pero ocupa el mismo espacio que el de la columna 1, alineando los textos superiormente a la perfección -->
+                            <div style="margin-top: 25px; visibility: hidden; pointer-events: none;">
+                                <span class="btn-outline">Spacer</span>
+                            </div>
                         </div>
 
                         <!-- Columna 3: Foto en el recuadro derecho -->
