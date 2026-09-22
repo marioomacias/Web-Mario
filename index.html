@@ -8,22 +8,201 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Fira Code solo para acentos, Inter para legibilidad profesional -->
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* ========================================= */
+        /* --- VARIABLES Y DISEÑO PROFESIONAL --- */
+        /* ========================================= */
+        :root {
+            --bg-color: #0b0b0e;      /* Fondo casi negro, muy elegante */
+            --card-bg: #121216;       /* Cartas ligeramente más claras */
+            --accent: #00ff41;        /* El verde neón como acento sutil */
+            --neon: #00e5ff;          /* Acento cian para la página de Experience & Labs */
+            --text-main: #f1f5f9;     /* Blanco roto para no cansar la vista */
+            --text-muted: #94a3b8;    /* Gris profesional para textos secundarios */
+            --border: #22222a;        /* Bordes muy sutiles */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color); color: var(--text-main);
+            font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden;
+            position: relative;
+        }
+
+        /* LUZ DETRÁS DEL RATÓN */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(600px circle at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(0, 255, 65, 0.04), transparent 40%);
+            pointer-events: none;
+            z-index: 1; 
+        }
+
+        /* TIPOGRAFÍA */
+        .section-title { font-family: 'Fira Code', monospace; font-size: 1.3rem; color: var(--accent); margin-bottom: 20px; font-weight: 500; }
+        .section-title::before { content: "> "; opacity: 0.7; }
+        .sub-heading { color: var(--text-main); font-size: 1.1rem; margin-bottom: 12px; font-weight: 500; }
+        .text-muted { color: var(--text-muted); }
+        .text-main { color: var(--text-main); }
+        .text-left { text-align: left; }
+        .text-neon { color: var(--neon); }
+        .cursor { animation: blink 1s step-end infinite; color: var(--accent); }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* NAVBAR */
+        .site-header {
+            position: sticky; top: 0;
+            background: rgba(11, 11, 14, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000; padding: 15px 0;
+        }
+        .navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        .logo { font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 500; color: #fff; }
+        .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: #fff; }
+
+        /* BOTONES */
+        .btn-primary {
+            background-color: transparent; color: var(--accent) !important;
+            border: 1px solid var(--accent); padding: 8px 18px; border-radius: 4px; transition: 0.2s; text-decoration: none; font-family: 'Fira Code', monospace; font-size: 0.85rem;
+        }
+        .btn-primary:hover { background-color: rgba(0, 255, 65, 0.1); }
+        .btn-outline {
+            background-color: transparent; color: var(--text-main); border: 1px solid var(--border); padding: 8px 18px; border-radius: 4px; transition: 0.2s; text-decoration: none; font-family: 'Fira Code', monospace; font-size: 0.85rem;
+        }
+        .btn-outline:hover { border-color: var(--text-muted); }
+
+        /* PÍLDORA (Dublin) */
+        .status-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 14px; border-radius: 30px; border: 1px solid var(--border);
+            font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;
+        }
+        .status-dot {
+            width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+            box-shadow: 0 0 6px var(--accent); animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0,255,65,0.5); }
+            70% { box-shadow: 0 0 0 6px rgba(0,255,65,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,255,65,0); }
+        }
+
+        /* ESTRUCTURA PRINCIPAL Y HERO */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+        .hero { padding: 80px 0 60px 0; }
+        .hero-title { font-size: 3rem; margin-bottom: 5px; letter-spacing: -0.02em; }
+        .hero-subtitle { font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 400; color: var(--text-muted); margin-bottom: 20px; }
+        .hero-text { max-width: 600px; font-size: 1.05rem; margin-bottom: 30px; color: var(--text-muted); }
+        .action-group { display: flex; gap: 15px; flex-wrap: wrap; }
+
+        /* CARTAS BENTO */
+        .bento-grid { display: grid; gap: 20px; grid-template-columns: repeat(6, 1fr); margin-bottom: 60px; }
+        .bento-card {
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+            padding: 35px; transition: border-color 0.3s;
+        }
+        .bento-card:hover { border-color: rgba(0, 255, 65, 0.3); }
+
+        /* CARTA DE AGRADECIMIENTO */
+        .gratitude-card {
+            border-left: 3px solid var(--accent); 
+            background: linear-gradient(90deg, rgba(0, 255, 65, 0.03) 0%, rgba(0,0,0,0) 100%);
+        }
+        .gratitude-text { font-size: 1.05rem; line-height: 1.7; margin-bottom: 0; }
+
+        /* LISTAS Y GRID */
+        .content-wrapper { max-width: 800px; }
+        .bullet-list { list-style: none; margin-bottom: 15px; }
+        .bullet-list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem; }
+        .bullet-list li::before { content: "›"; position: absolute; left: 0; color: var(--accent); font-family: 'Fira Code', monospace; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 20px; }
+        .clean-list { list-style: none; }
+        .clean-list li { border-left: 1px solid var(--border); padding-left: 15px; margin-bottom: 12px; color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- NUEVO: OFFLINE MODE GRID (3 Columnas) --- */
+        .offline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.2fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .offline-list .bullet-list { margin-bottom: 0; }
+        
+        .offline-photos {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .photo-with-badge {
+            position: relative;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            flex: 1;
+        }
+        .offline-photos .photo-with-badge:nth-child(2) {
+            transform: translateY(-20px); /* Desfase vertical */
+        }
+        .photo-with-badge img {
+            display: block;
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            filter: brightness(0.9);
+            transition: filter 0.3s ease;
+        }
+        .photo-with-badge:hover img { filter: brightness(1.1); }
+        
+        .photo-badge {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            background-color: var(--bg-color);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 3px 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        /* FUNCIONES EN ESMARK */
+        .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 25px; margin-bottom: 15px; }
+        .role-panel { background: rgba(255,255,255,0.015); border: 1px solid var(--border); border-radius: 6px; padding: 22px; }
+        .role-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+        .role-header .sub-heading { margin-bottom: 0; }
+        .role-dates { font-family: 'Fira Code', monospace; font-size: 0.78rem; color: var(--accent); white-space: nowrap; }
+
+        /* CONTACTO Y FOOTER */
+        .flex-center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .bento-card { grid-column: span 6 !important; padding: 25px; }
+            .offline-grid { grid-template-columns: 1fr; gap: 20px; }
+            .offline-photos .photo-with-badge:nth-child(2) { transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
         <nav class="navbar container">
             <div class="logo">mario_macias<span class="cursor">_</span></div>
-            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#journey">Journey</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact" class="btn-primary">Connect</a></li>
             </ul>
         </nav>
     </header>
@@ -47,27 +226,54 @@
 
         <div class="bento-grid">
 
-            <!-- WHO I AM (Personal intro, links nav's #about) -->
+            <!-- OFFLINE MODE SECTION -->
             <div class="bento-card" id="about" style="grid-column: span 6;">
-                <div class="card-content text-left">
-                    <h2 class="section-title">Who_I_Am</h2>
-                    <div class="content-wrapper">
-                        <p class="text-muted">Hi, I'm Mario — if you are reading this, you've made it to my portfolio. I'm currently studying Systems and Network Administration, and I built this space to document the projects, experience, and knowledge that make up who I am and what I do in IT.</p>
-                        <p class="text-muted">A year and a half ago I left Spain to build a new life in Dublin, on my own. That decision shapes how I approach everything here — with patience, curiosity, and the will to keep improving.</p>
-                        <div style="margin-top: 25px;">
-                            <a href="about.html" class="btn-outline">Want to know more about me, offline? →</a>
+                <div class="card-content">
+                    <h2 class="section-title">Offline_Mode</h2>
+
+                    <div class="offline-grid">
+                        <!-- Columna 1: Texto y botón -->
+                        <div class="offline-text">
+                            <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
+                            <div style="margin-top: 20px;">
+                                <a href="about.html" class="btn-outline">Know more about me &gt;</a>
+                            </div>
+                        </div>
+
+                        <!-- Columna 2: Lista de hobbies -->
+                        <div class="offline-list">
+                            <ul class="bullet-list">
+                                <li>Trail running & hiking</li>
+                                <li>Travel photography</li>
+                                <li>Local IT / dev meetups</li>
+                                <li>Home-lab experiments</li>
+                            </ul>
+                        </div>
+
+                        <!-- Columna 3: Fotos con etiquetas flotantes -->
+                        <div class="offline-photos">
+                            <div class="photo-with-badge">
+                                <!-- Reemplaza esto con tu foto real en la carpeta assets -->
+                                <img src="assets/images/foto-dublin.jpg" alt="Mario en Dublin">
+                                <span class="photo-badge">Dublin</span>
+                            </div>
+                            <div class="photo-with-badge">
+                                <!-- Reemplaza esto con tu foto real en la carpeta assets -->
+                                <img src="assets/images/foto-outdoors.jpg" alt="Mario Outdoors">
+                                <span class="photo-badge">Outdoors</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- THE EXPERIENCE (Sin excesos, pura narrativa) -->
+            <!-- THE EXPERIENCE -->
             <div class="bento-card" id="journey" style="grid-column: span 6;">
                 <div class="card-content text-left">
                     <h2 class="section-title">Esmark Finch Vehicle Engineering</h2>
                     <div class="content-wrapper">
                         <p class="text-muted">After listening to Rolando's advice to build a portfolio, and everything Juan taught me along the way, I put together this space to document my <strong>Esmark Trial</strong> where I have been able to put hands on experience at <a href="https://vehicleengineering.ie" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline;">vehicleengineering.ie</a>, where I got to meet the team, see the facilities, and work with real enterprise infrastructure for the first time.</p>
-                        <p class="text-muted">The trial covered two distinct roles, back to back — here's what each one involved:</p>
+                        <p class="text-muted" style="margin-top: 15px;">The trial covered two distinct roles, back to back — here's what each one involved:</p>
 
                         <div class="role-grid">
                             <div class="role-panel">
@@ -80,7 +286,6 @@
                                     <li>User provisioning, account creation & credential security in Microsoft 365 Business, aligned with IAM protocols</li>
                                     <li>Crimping, testing and terminating Cat5e/Cat6 cabling, patch panel installs, and LTE/WiFi/GPS cabling on R1900 mobile routers</li>
                                     <li>Frontline helpdesk support — guided Logistics through a printer language error and general hardware/software troubleshooting</li>
-                                    <li>Navigated Microsoft Dynamics 365 Business Central and enterprise network topologies</li>
                                 </ul>
                             </div>
                             <div class="role-panel">
@@ -95,19 +300,11 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <h2 class="section-title" style="margin-top: 40px;">What the trial taught me</h2>
-                        <p class="text-muted">Beyond the tools and software, these days were my first real look at how a technology company with big ambitions runs day to day:</p>
-                        <ul class="bullet-list">
-                            <li>Seeing, for the first time, how work really gets done in a tech company with big goals.</li>
-                            <li>Learning to document my work, ask the right questions, and take suggestions on board.</li>
-                            <li>Stepping outside my comfort zone to look for something new — a mindset, not just a skill.</li>
-                        </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- GRATITUDE (Elegante y destacada) -->
+            <!-- GRATITUDE -->
             <div class="bento-card gratitude-card" style="grid-column: span 6;">
                 <div class="card-content text-left">
                     <h2 class="section-title">Acknowledgments</h2>
@@ -153,21 +350,16 @@
                 </div>
             </div>
 
-            <!-- CONTACT (Profesional y directo) -->
-            <div class="bento-card contact-card" id="contact" style="grid-column: span 6;">
-                <div class="card-content flex-center text-left">
-                    <h2 class="section-title">System_Status</h2>
-                    <p class="text-muted status-text">
-                        My current objective is to integrate into an IT Support or Infrastructure team in Dublin, where I can contribute my baseline knowledge, troubleshoot effectively, and continue expanding my technical skill set.
-                    </p>
+            <!-- SECCIÓN SYSTEM.EXIT(0) -->
+            <div class="bento-card" style="grid-column: span 6; text-align: center;">
+                <div class="card-content flex-center">
+                    <h2 class="section-title">System.exit(0)</h2>
+                    <p class="text-muted" style="margin-bottom: 20px;">Thank you for visiting my digital space. Always ready for the next challenge.</p>
                     
-                    <div class="social-row">
-                        <a href="mailto:marioo.maciaas@gmail.com" aria-label="Send Email" class="social-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-                        </a>
-                        <a href="https://github.com/marioomacias" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.65 1.24 3.3.94.1-.73.4-1.24.72-1.52-2.52-.29-5.17-1.26-5.17-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.19-1.47 3.15-1.16 3.15-1.16.62 1.57.23 2.73.11 3.02.73.79 1.16 1.8 1.16 3.04 0 4.35-2.65 5.31-5.18 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.74-.01 3.11 0 .3.2.66.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
-                        </a>
+                    <a href="mailto:marioo.maciaas@gmail.com" class="btn-primary" style="padding: 10px 24px; font-size: 1rem;">marioo.maciaas@gmail.com</a>
+                    
+                    <div style="margin-top: 25px;">
+                        <a href="#hero" class="text-muted" style="text-decoration: none; font-size: 0.85rem; font-family: 'Fira Code', monospace;">&uarr; Back to top</a>
                     </div>
                 </div>
             </div>
@@ -175,10 +367,28 @@
         </div>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Mario Macias. Building the foundation.</p>
-    </footer>
-
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Luz sutil que sigue al ratón
+            document.addEventListener('mousemove', (e) => {
+                document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+                document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+            });
+            
+            // 2. Navegación suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
