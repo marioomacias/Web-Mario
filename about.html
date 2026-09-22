@@ -11,28 +11,27 @@
     
     <!-- Estilos exclusivos para la página Personal / Offline -->
     <style>
-        /* Ajuste de Cabecera */
+        /* Ajuste de Cabecera (Título grande, conexión debajo) */
         .offline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px; margin-bottom: 50px; }
         .offline-title-group { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
-        .offline-title { font-size: 2rem; font-family: 'Fira Code', monospace; margin: 0; color: var(--text-main); font-weight: 500; opacity: 0.9; }
+        .offline-title { font-size: 2.2rem; font-family: 'Fira Code', monospace; margin: 0; color: var(--text-main); font-weight: 500; opacity: 0.9; }
         .status-pill { margin: 0 !important; }
 
         /* Layout Grid para Éire (Texto Izquierda / Foto Derecha) */
         .layout-split { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: center; }
-        /* Añadido object-position: center center para centrar siempre la imagen */
-        .layout-split img { width: 100%; height: 280px; object-fit: cover; object-position: center center; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        /* Altura ampliada a 380px para que quepa el cuerpo entero */
+        .layout-split img { width: 100%; height: 380px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
         @media(max-width: 768px) { .layout-split { grid-template-columns: 1fr; } }
 
-        /* Reflexión Interactiva (El detalle único) */
+        /* Reflexión Interactiva */
         .reflection-card { position: relative; padding: 35px; border-radius: 8px; background: linear-gradient(145deg, rgba(20,20,25,0.4) 0%, rgba(11,11,14,0.8) 100%); border: 1px solid var(--border); transition: all 0.5s ease; overflow: hidden; margin-top: 15px; }
         .reflection-card:hover { border-color: var(--neon); box-shadow: 0 0 25px rgba(0, 229, 255, 0.08); transform: translateY(-2px); }
         .secret-reveal { margin-top: 25px; padding-top: 20px; border-top: 1px dashed var(--border); color: var(--neon); font-family: 'Fira Code', monospace; font-size: 0.9rem; opacity: 0; transform: translateY(15px); transition: all 0.5s ease; text-align: center; }
         .reflection-card:hover .secret-reveal { opacity: 1; transform: translateY(0); }
 
-        /* Galería de Hobbies (Reducida a 3) */
+        /* Galería de Hobbies (Altura ampliada a 350px) */
         .personal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; }
-        /* Añadido object-position: center center para enfocar el centro */
-        .personal-gallery img { width: 100%; height: 220px; object-fit: cover; object-position: center center; border-radius: 8px; border: 1px solid var(--border); filter: grayscale(20%) brightness(0.9); transition: all 0.4s ease; }
+        .personal-gallery img { width: 100%; height: 350px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); filter: grayscale(20%) brightness(0.9); transition: all 0.4s ease; }
         .personal-gallery img:hover { filter: grayscale(0%) brightness(1.1); transform: scale(1.02); border-color: var(--neon); z-index: 2; box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1); }
 
         /* Logros Personales y Objetivos */
@@ -84,7 +83,8 @@
                             </p>
                         </div>
                         <div class="img-block">
-                            <img src="assets/docs/mario_montaña.jpeg" alt="Mario en la montaña" loading="lazy">
+                            <!-- object-position: center 60% empuja el foco hacia tu cuerpo para que se te vea entero -->
+                            <img src="assets/docs/mario_montaña.jpeg" alt="Mario en la montaña" loading="lazy" style="object-position: center 60%;">
                         </div>
                     </div>
                 </div>
@@ -118,12 +118,12 @@
                         <li><strong>The Outdoors:</strong> Whether I'm hitting the trails in the mountains or exploring cities like Paris, spending time off the grid is how I run my own personal maintenance.</li>
                     </ul>
 
-                    <!-- Galería de Hobbies (Solo 3 fotos) -->
+                    <!-- Galería de Hobbies (Solo 3 fotos, encuadradas al cuerpo) -->
                     <div class="personal-gallery">
-                        <img src="assets/docs/mario_maraton.jpeg" alt="Mario corriendo un maratón" loading="lazy">
-                        <img src="assets/docs/mario_paris.jpeg" alt="Mario de viaje en Paris" loading="lazy">
-                        <!-- Ajuste opcional para la foto del bosque, por si quieres que baje un poco más el encuadre -->
-                        <img src="assets/docs/outdoors.jpeg" alt="Mario Outdoors" loading="lazy" style="object-position: center 70%;">
+                        <img src="assets/docs/mario_maraton.jpeg" alt="Mario corriendo un maratón" loading="lazy" style="object-position: center 50%;">
+                        <img src="assets/docs/mario_paris.jpeg" alt="Mario de viaje en Paris" loading="lazy" style="object-position: center 60%;">
+                        <!-- Al poner 85%, garantizamos que la foto del bosque muestre la parte inferior donde estás tú -->
+                        <img src="assets/docs/outdoors.jpeg" alt="Mario Outdoors" loading="lazy" style="object-position: center 85%;">
                     </div>
 
                     <!-- Logros Personales -->
