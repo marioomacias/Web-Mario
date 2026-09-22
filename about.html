@@ -1,54 +1,133 @@
-<!-- SECCIÓN OFFLINE MODE -->
-<div class="bento-card" id="about" style="grid-column: span 6;">
-    <div class="card-content">
-        <h2 class="section-title">Offline_Mode</h2>
-
-        <div class="offline-grid">
-            <!-- Columna 1: Texto y botón -->
-            <div class="offline-text">
-                <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
-                <div style="margin-top: 20px;">
-                    <a href="about.html" class="btn-outline">Know more about me &gt;</a>
-                </div>
-            </div>
-
-            <!-- Columna 2: Lista de hobbies -->
-            <div class="offline-list">
-                <ul class="bullet-list">
-                    <li>Trail running & hiking</li>
-                    <li>Travel photography</li>
-                    <li>Local IT / dev meetups</li>
-                    <li>Home-lab experiments</li>
-                </ul>
-            </div>
-
-            <!-- Columna 3: Fotos con etiquetas flotantes -->
-            <div class="offline-photos">
-                <div class="photo-with-badge">
-                    <!-- Sustituye el src por la ruta de tu foto real -->
-                    <img src="assets/images/foto-dublin.jpg" alt="Mario en Dublin">
-                    <span class="photo-badge">Dublin</span>
-                </div>
-                <div class="photo-with-badge">
-                    <!-- Sustituye el src por la ruta de tu foto real -->
-                    <img src="assets/images/foto-outdoors.jpg" alt="Mario Outdoors">
-                    <span class="photo-badge">Outdoors</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- SECCIÓN SYSTEM.EXIT(0) -->
-<div class="bento-card" style="grid-column: span 6; text-align: center;">
-    <div class="card-content flex-center">
-        <h2 class="section-title">System.exit(0)</h2>
-        <p class="text-muted" style="margin-bottom: 20px;">Thank you for visiting my digital space. Always ready for the next challenge.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Macias | Offline Mode</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Estilos exclusivos para la página Personal / Offline -->
+    <style>
+        /* Galería de Hobbies */
+        .personal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 25px; }
+        .personal-gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); filter: grayscale(30%) brightness(0.8); transition: all 0.4s ease; cursor: crosshair; }
+        .personal-gallery img:hover { filter: grayscale(0%) brightness(1.1); transform: scale(1.02); border-color: var(--neon); z-index: 2; box-shadow: 0 10px 20px rgba(0, 229, 255, 0.1); }
         
-        <a href="mailto:marioo.maciaas@gmail.com" class="btn-primary" style="padding: 10px 24px; font-size: 1rem;">marioo.maciaas@gmail.com</a>
+        /* Terminal Interactiva */
+        .terminal-box { background: #0b0b0e; border: 1px solid var(--border); border-radius: 8px; font-family: 'Fira Code', monospace; overflow: hidden; margin-top: 25px; box-shadow: inset 0 0 15px rgba(0,0,0,0.5); }
+        .terminal-header { background: #16161d; padding: 10px 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
+        .terminal-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal-header .red { background: #ff5f56; }
+        .terminal-header .yellow { background: #ffbd2e; }
+        .terminal-header .green { background: #27c93f; }
+        .terminal-header .title { margin-left: 10px; color: var(--text-muted); font-size: 0.85rem; letter-spacing: 0.5px; }
+        .terminal-body { padding: 20px; font-size: 0.9rem; color: var(--text-main); line-height: 1.8; }
+        .terminal-body .prompt { color: var(--neon); margin-right: 10px; font-weight: bold; }
+        .terminal-body .output { color: #8b949e; margin-bottom: 15px; margin-left: 20px; font-size: 0.85rem; }
         
-        <div style="margin-top: 25px;">
-            <a href="#hero" class="text-muted" style="text-decoration: none; font-size: 0.85rem; font-family: 'Fira Code', monospace;">&uarr; Back to top</a>
+        /* Botón Instagram */
+        .ig-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; padding: 12px 28px; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; border: none; }
+        .ig-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(220, 39, 67, 0.3); color: white; }
+        .ig-btn svg { width: 22px; height: 22px; }
+    </style>
+</head>
+<body>
+    <main class="container" style="padding-top: 60px;">
+
+        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+            <a href="index.html" class="btn-cyan">&larr; Return to Workspace</a>
+            <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Connection: Human Mode</span>
         </div>
-    </div>
-</div>
+
+        <div class="bento-grid" style="grid-template-columns: 1fr;">
+
+            <!-- Éire Section -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <h2><span class="text-neon">🇮🇪</span> &gt; Éire (Ireland)</h2>
+                    <p class="text-muted" style="margin-top: 15px; font-size: 1.05rem;">
+                        Ireland is more than just a coordinate on a map—it is the place where I forced myself to grow. Moving from Spain completely on my own was a hard reset on my life. 
+                    </p>
+                    <p class="text-muted" style="margin-top: 12px; font-size: 1.05rem;">
+                        I came here because Dublin is a leading European tech hub, and I wanted to surround myself with industry experts. But beyond the career opportunities, the challenge of building a life from scratch, mastering a second language, and navigating early independence stripped away my comfort zone. Ireland taught me that true resilience is built when you have no other choice but to adapt and thrive.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mindset Section -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <h2><span class="text-neon">🧠</span> &gt; Mindset_&_Growth</h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;">
+                        <div>
+                            <p class="text-muted">If working in IT has taught me anything, it's that systems break, and you have to know how to troubleshoot them calmly. Relocating alone was my ultimate real-world troubleshooting test.</p>
+                            <p class="text-muted" style="margin-top: 12px;">I learned to be self-reliant, to adapt to continuous updates in my environment, and to embrace the fact that growth only happens when you step out of your known network.</p>
+                        </div>
+                        
+                        <!-- Terminal Interactiva -->
+                        <div class="terminal-box">
+                            <div class="terminal-header">
+                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                                <span class="title">mario@dublin:~/mindset</span>
+                            </div>
+                            <div class="terminal-body">
+                                <div><span class="prompt">$</span> systemctl status comfort_zone</div>
+                                <div class="output">● comfort_zone.service - Offline<br>   Status: "Disconnected for growth purposes"</div>
+                                
+                                <div style="margin-top: 10px;"><span class="prompt">$</span> ./deploy_resilience.sh</div>
+                                <div class="output">Building mindset... [██████████] 100%<br>Warning: Challenges ahead. Embracing them anyway.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hobbies & Marathons -->
+            <div class="bento-card">
+                <div class="card-content">
+                    <h2><span class="text-neon">⛰️</span> &gt; System.restore()</h2>
+                    <p class="text-muted" style="margin-top: 12px;">When I'm not configuring a server or studying networks, I'm usually disconnecting to recharge. Technical skills can be taught, but discipline is forged.</p>
+                    
+                    <ul class="bullet-list" style="margin-top: 15px; margin-bottom: 20px;">
+                        <li><strong>Marathons:</strong> Endurance sports taught me that consistency always beats intensity. Pushing past the "wall" at kilometer 30 builds the exact mental toughness needed to solve critical problems under pressure.</li>
+                        <li><strong>The Outdoors:</strong> Whether I'm hitting the trails in the mountains or exploring cities like Paris, spending time off the grid is how I run my own personal maintenance.</li>
+                    </ul>
+
+                    <!-- Galería de Hobbies con tus fotos -->
+                    <div class="personal-gallery">
+                        <img src="assets/docs/mario_maraton.jpeg" alt="Mario corriendo un maratón" loading="lazy" title="Consistency & Endurance">
+                        <img src="assets/docs/mario_montaña.jpeg" alt="Mario en la montaña" loading="lazy" title="Disconnecting to reconnect">
+                        <img src="assets/docs/mario_paris.jpeg" alt="Mario de viaje en Paris" loading="lazy" title="Exploring the world">
+                        <img src="assets/docs/outdoors.jpeg" alt="Mario Outdoors" loading="lazy" title="System.restore()">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram / Conexión -->
+            <div class="bento-card contact-card">
+                <div class="card-content" style="text-align: center; padding: 40px 20px;">
+                    <h2><span class="text-neon">📡</span> &gt; Connect_Off_The_Clock</h2>
+                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        Races, training blocks, travels, and day-to-day life in Ireland. If you want to see the human behind the IT infrastructure, let's connect.
+                    </p>
+                    
+                    <a href="https://www.instagram.com/marioo.macias/?hl=en" target="_blank" rel="noopener noreferrer" class="ig-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        @marioo.macias
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
