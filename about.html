@@ -3,11 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Macias | Offline Mode</title>
+    <title>Mario Macías | Off The Clock</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Scoped styles for this page only — prefixed "pm-" so they never collide with styles.css */
+        .pm-cube-scene {
+            width: 140px;
+            height: 140px;
+            margin: 28px auto 8px;
+            perspective: 800px;
+        }
+        .pm-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: pm-spin 16s linear infinite;
+        }
+        .pm-cube-scene:hover .pm-cube,
+        .pm-cube-scene:focus-within .pm-cube {
+            animation-play-state: paused;
+        }
+        .pm-face {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            color: var(--neon);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--neon);
+            box-shadow: 0 0 12px rgba(0, 255, 140, 0.12) inset;
+        }
+        .pm-face.front  { transform: rotateY(0deg) translateZ(70px); }
+        .pm-face.back   { transform: rotateY(180deg) translateZ(70px); }
+        .pm-face.right  { transform: rotateY(90deg) translateZ(70px); }
+        .pm-face.left   { transform: rotateY(-90deg) translateZ(70px); }
+        .pm-face.top    { transform: rotateX(90deg) translateZ(70px); }
+        .pm-face.bottom { transform: rotateX(-90deg) translateZ(70px); }
+
+        .pm-cube-caption {
+            text-align: center;
+            font-size: 0.75rem;
+            margin-top: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .pm-cube { animation: none; }
+        }
+    </style>
 </head>
 <body>
     <main class="container" style="padding-top: 60px;">
@@ -19,37 +72,44 @@
 
         <div class="bento-grid" style="grid-template-columns: 1fr;">
 
-            <!-- Intro: por qué existe esta página -->
+            <!-- Intro: why this page exists -->
             <div class="bento-card">
                 <div class="card-content">
                     <div class="layout-split">
                         <div class="text-block">
                             <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
-                            <p class="text-muted" style="margin-top: 12px;">The main page is my professional profile. This one is the rest of me — where I moved from, why Dublin, and what I do when I'm not troubleshooting a network. Still me, just off the clock.</p>
+                            <p class="text-muted" style="margin-top: 12px;">The main page runs my professional build. This one is the source behind it — why Dublin, what gets me out the door before sunrise, and the parts of me a CV never has room for. Still Mario, just off the clock.</p>
                         </div>
+                        <div class="visual-block">
                             <div class="terminal-widget">
-    <div class="term-header">
-        <span class="term-btn close"></span>
-        <span class="term-btn min"></span>
-        <span class="term-btn max"></span>
-    </div>
-    <div class="term-body">
-        <ul class="term-list">
-            <li><span class="text-muted">> Location:</span> Dublin, IE </li>
-            <li><span class="text-muted">> Next_Goal:</span> 46km Trail </li>
-            <li><span class="text-muted">> Vibe:</span> Exploring & Training </li>
-        </ul>
-        <p class="cursor-line"><span class="text-neon">marioo.macias </span><span class="text-muted":) /span> <span class="cursor">_</span></p>
-    </div>
-</div>
-                                    <div class="face front">Dublin</div>
-                                    <div class="face back">IT</div>
-                                    <div class="face right">Marathons</div>
-                                    <div class="face left">Consistency</div>
-                                    <div class="face top">Curiosity</div>
-                                    <div class="face bottom">Growth</div>
+                                <div class="term-header">
+                                    <span class="term-btn close"></span>
+                                    <span class="term-btn min"></span>
+                                    <span class="term-btn max"></span>
+                                </div>
+                                <div class="term-body">
+                                    <ul class="term-list">
+                                        <li><span class="text-muted">> Location:</span> Dublin, IE</li>
+                                        <li><span class="text-muted">> Next_Goal:</span> 46km Trail Ultra</li>
+                                        <li><span class="text-muted">> Current_State:</span> Exploring & Training</li>
+                                        <li><span class="text-muted">> Note:</span> Character compiles one kilometre at a time.</li>
+                                    </ul>
+                                    <p class="cursor-line"><span class="text-neon">marioo.macias</span><span class="text-muted">:~$</span> <span class="cursor">_</span></p>
                                 </div>
                             </div>
+
+                            <!-- Core facets — hover/focus to pause the rotation -->
+                            <div class="pm-cube-scene" tabindex="0" aria-label="Core facets: Dublin, IT, Marathons, Consistency, Curiosity, Growth">
+                                <div class="pm-cube">
+                                    <div class="pm-face front">Dublin</div>
+                                    <div class="pm-face back">IT</div>
+                                    <div class="pm-face right">Marathons</div>
+                                    <div class="pm-face left">Consistency</div>
+                                    <div class="pm-face top">Curiosity</div>
+                                    <div class="pm-face bottom">Growth</div>
+                                </div>
+                            </div>
+                            <p class="text-muted pm-cube-caption">// six faces, one build</p>
                         </div>
                     </div>
                 </div>
@@ -58,24 +118,25 @@
             <!-- Why Dublin / Personal Journey -->
             <div class="bento-card">
                 <div class="card-content">
-                    <h2><span class="text-neon" &gt; Éire </h2>
-                    <p class="text-muted" style="margin-top: 12px;">A year and a half ago, I made one of the most defining decisions of my life: moving from Spain to Ireland completely on my own.</p>
-                    <p class="text-muted" style="margin-top: 12px;">Building a life from scratch in a new country, mastering a different language, and achieving independence at an early age taught me true resilience. Dublin is a major European tech hub, and I chose to establish my roots here to surround myself with industry leaders and build a long-term IT career.</p>
+                    <h2><span class="text-neon">&gt;</span> Éire</h2>
+                    <p class="text-muted" style="margin-top: 12px;">A year and a half ago I made the boldest call of my life: I packed a bag and moved from Spain to Ireland completely on my own — no safety net, no contacts, no plan B.</p>
+                    <p class="text-muted" style="margin-top: 12px;">Starting from zero taught me more about resilience than any manual could. I learned a new language, built a routine, and earned my independence early. I chose to put down roots in Dublin because it's one of Europe's real tech hubs — the kind of place where the people around you push you to get better, not just get by.</p>
                 </div>
             </div>
 
-            <!-- Marathons -->
+            <!-- Marathons & exploring -->
             <div class="bento-card">
                 <div class="card-content">
-                    <h2><span class="text-neon" &gt; Marathons_&_Discipline</h2>
-                    <p class="text-muted" style="margin-top: 12px;">Technical skills can be learned, but attitude, dedication, and consistency are what truly make the difference. Endurance sports translate directly to how I handle professional challenges.</p>
+                    <h2><span class="text-neon">&gt;</span> Marathons_and_The_Long_Way_Round</h2>
+                    <p class="text-muted" style="margin-top: 12px;">Technical skills can be taught. What can't be taught is showing up — for the early run, the long shift, the problem that doesn't get solved on the first try. Endurance sport is where I built that habit.</p>
                     <ul class="bullet-list" style="margin-top: 15px;">
-                        <li><strong>Consistency:</strong> Long-term goals are achieved through daily, methodical execution.</li>
-                        <li><strong>Resilience:</strong> Pushing past the "wall" at kilometer 30 builds the same mental toughness needed to troubleshoot critical infrastructure issues under pressure.</li>
+                        <li><strong>Consistency:</strong> long-term goals are won through daily, unglamorous repetition — training plans and ticket queues aren't so different.</li>
+                        <li><strong>Resilience:</strong> pushing through the wall at kilometre 30 builds the same mental toughness I rely on troubleshooting critical infrastructure under pressure.</li>
+                        <li><strong>Curiosity:</strong> every long run doubles as an excuse to explore — a new route, a new trail, a corner of Ireland I hadn't seen yet. Right now that curiosity is aimed at a 46km trail, because the flat road stopped being enough.</li>
                     </ul>
 
-                    <!-- Galería de fotos: sustituye los src de abajo por tus fotos reales
-                         (por ejemplo en assets/images/marathons/) -->
+                    <!-- Photo gallery: replace the src values below with your real photos
+                         (e.g. in assets/images/marathons/) -->
                     <div class="photo-gallery">
                         <div class="photo-frame">
                             <img src="assets/images/marathons/race-1.jpg" alt="Mario running a marathon" loading="lazy">
@@ -97,7 +158,7 @@
             <div class="bento-card">
                 <div class="card-content text-center">
                     <h2><span class="text-neon">🧠</span> &gt; System_Attributes</h2>
-                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 5px;">Hover over the encrypted blocks below to decrypt core soft skills.</p>
+                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 5px;">Hover over the encrypted blocks to decrypt the traits that don't show up in a job description.</p>
 
                     <div class="decrypt-grid">
                         <div class="decrypt-box">
@@ -124,9 +185,9 @@
             <div class="bento-card">
                 <div class="card-content text-center">
                     <h2><span class="text-neon">📷</span> &gt; Off_The_Clock</h2>
-                    <p class="text-muted" style="margin-top: 12px;">Races, training blocks, and day-to-day life in Dublin — mostly documented here:</p>
+                    <p class="text-muted" style="margin-top: 12px;">Races, training blocks, and everyday life in Dublin — mostly documented one photo at a time:</p>
                     <div class="personal-links" style="justify-content: center;">
-                        <!-- Reemplaza el href por tu usuario real de Instagram -->
+                        <!-- Replace the href with your real Instagram handle -->
                         <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="btn-cyan">Instagram &rarr;</a>
                     </div>
                 </div>
