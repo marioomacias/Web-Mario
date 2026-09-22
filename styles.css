@@ -226,3 +226,53 @@ body::before {
 
 /* Fila de enlaces personales (IG) en about.html */
 .personal-links { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+/* --- WIDGET DE TERMINAL (ABOUT PAGE) --- */
+.terminal-widget {
+    background: #0a0a0c;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.term-header {
+    background: #16161c;
+    padding: 10px 15px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.term-btn {
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%;
+}
+.term-btn.close { background: #ff5f56; }
+.term-btn.min { background: #ffbd2e; }
+.term-btn.max { background: #27c93f; }
+
+.term-body {
+    padding: 20px;
+    color: var(--text-main);
+    text-align: left;
+}
+
+.term-list {
+    list-style: none; 
+    margin-top: 15px; 
+    margin-bottom: 15px;
+}
+
+.term-list li {
+    margin-bottom: 8px;
+}
+
+.cursor-line {
+    margin-top: 10px;
+}
