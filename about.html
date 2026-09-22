@@ -1,109 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mario Macias | Offline Mode</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <main class="container" style="padding-top: 60px;">
+<!-- SECCIÓN OFFLINE MODE -->
+<div class="bento-card" id="about" style="grid-column: span 6;">
+    <div class="card-content">
+        <h2 class="section-title">Offline_Mode</h2>
 
-        <div style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-            <a href="index.html" class="btn-cyan">&larr; Back to Main Interface</a>
-            <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Personal Mode</span>
+        <div class="offline-grid">
+            <!-- Columna 1: Texto y botón -->
+            <div class="offline-text">
+                <p class="text-muted">Life isn't just about servers and deployments. Discipline outside translates directly to focus in IT.</p>
+                <div style="margin-top: 20px;">
+                    <a href="about.html" class="btn-outline">Know more about me &gt;</a>
+                </div>
+            </div>
+
+            <!-- Columna 2: Lista de hobbies -->
+            <div class="offline-list">
+                <ul class="bullet-list">
+                    <li>Trail running & hiking</li>
+                    <li>Travel photography</li>
+                    <li>Local IT / dev meetups</li>
+                    <li>Home-lab experiments</li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Fotos con etiquetas flotantes -->
+            <div class="offline-photos">
+                <div class="photo-with-badge">
+                    <!-- Sustituye el src por la ruta de tu foto real -->
+                    <img src="assets/images/foto-dublin.jpg" alt="Mario en Dublin">
+                    <span class="photo-badge">Dublin</span>
+                </div>
+                <div class="photo-with-badge">
+                    <!-- Sustituye el src por la ruta de tu foto real -->
+                    <img src="assets/images/foto-outdoors.jpg" alt="Mario Outdoors">
+                    <span class="photo-badge">Outdoors</span>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
 
-        <div class="bento-grid" style="grid-template-columns: 1fr;">
-
-            <!-- Intro -->
-            <div class="bento-card">
-                <div class="card-content">
-                    <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
-                    <p class="text-muted" style="margin-top: 12px;">The main page is my professional profile. This one is the rest of me — where I moved from, why Dublin, and what I do when I'm not troubleshooting a network. Still me, just off the clock.</p>
-                </div>
-            </div>
-
-            <!-- Relocation & Mindset -->
-            <div class="bento-card">
-                <div class="card-content">
-                    <h2><span class="text-neon">&gt;</span> Relocation_&_Growth</h2>
-                    <p class="text-muted" style="margin-top: 12px;">A year and a half ago, I made a defining decision: moving from Spain to Ireland independently. Rebuilding my life in a new country, mastering a second language, and navigating early independence forged true resilience.</p>
-                    <p class="text-muted" style="margin-top: 12px;">I chose Dublin—a leading European tech hub—to plant my roots, surround myself with industry experts, and build a lasting IT career.</p>
-                </div>
-            </div>
-
-            <!-- Marathons & Discipline -->
-            <div class="bento-card">
-                <div class="card-content">
-                    <h2><span class="text-neon">&gt;</span> Marathons_&_Discipline</h2>
-                    <p class="text-muted" style="margin-top: 12px;">While technical skills can be taught, attitude and consistency make the real difference. My background in endurance sports directly shapes my approach to professional challenges:</p>
-                    
-                    <ul class="bullet-list" style="margin-top: 15px; margin-bottom: 20px;">
-                        <li style="margin-bottom: 8px;"><strong>Consistency:</strong> Reaching long-term goals requires daily, methodical execution.</li>
-                        <li><strong>Resilience:</strong> Pushing past the "wall" at kilometer 30 builds the exact mental toughness needed to troubleshoot critical infrastructure under pressure.</li>
-                    </ul>
-
-                    <div class="photo-gallery">
-                        <div class="photo-frame">
-                            <img src="assets/images/marathons/race-1.jpg" alt="Mario running a marathon" loading="lazy">
-                            <p class="photo-caption">// Dublin Marathon 2026</p>
-                        </div>
-                        <div class="photo-frame">
-                            <img src="assets/images/marathons/race-2.jpg" alt="Mario at the finish line" loading="lazy">
-                            <p class="photo-caption">// The Finish Line</p>
-                        </div>
-                        <div class="photo-frame">
-                            <img src="assets/images/marathons/race-3.jpg" alt="Mario in training" loading="lazy">
-                            <p class="photo-caption">// Training Block</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Interactive Section: Discover More -->
-            <div class="bento-card">
-                <div class="card-content text-center">
-                    <h2><span class="text-neon">🧠</span> &gt; System_Attributes</h2>
-                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 20px;">Hover over the encrypted blocks below to decrypt core soft skills.</p>
-
-                    <div class="decrypt-grid">
-                        <div class="decrypt-box">
-                            <span class="encrypted">01000001</span>
-                            <span class="decrypted">Adaptability</span>
-                        </div>
-                        <div class="decrypt-box">
-                            <span class="encrypted">01110010</span>
-                            <span class="decrypted">Responsibility</span>
-                        </div>
-                        <div class="decrypt-box">
-                            <span class="encrypted">11010100</span>
-                            <span class="decrypted">Consistency</span>
-                        </div>
-                        <div class="decrypt-box">
-                            <span class="encrypted">10011001</span>
-                            <span class="decrypted">Troubleshooting</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personal social -->
-            <div class="bento-card">
-                <div class="card-content text-center">
-                    <h2><span class="text-neon">📷</span> &gt; Off_The_Clock</h2>
-                    <p class="text-muted" style="margin-top: 12px; margin-bottom: 15px;">Races, training blocks, and day-to-day life in Dublin — mostly documented here:</p>
-                    <div class="personal-links" style="display: flex; justify-content: center;">
-                        <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="btn-cyan">Instagram &rarr;</a>
-                    </div>
-                </div>
-            </div>
-
+<!-- SECCIÓN SYSTEM.EXIT(0) -->
+<div class="bento-card" style="grid-column: span 6; text-align: center;">
+    <div class="card-content flex-center">
+        <h2 class="section-title">System.exit(0)</h2>
+        <p class="text-muted" style="margin-bottom: 20px;">Thank you for visiting my digital space. Always ready for the next challenge.</p>
+        
+        <a href="mailto:marioo.maciaas@gmail.com" class="btn-primary" style="padding: 10px 24px; font-size: 1rem;">marioo.maciaas@gmail.com</a>
+        
+        <div style="margin-top: 25px;">
+            <a href="#hero" class="text-muted" style="text-decoration: none; font-size: 0.85rem; font-family: 'Fira Code', monospace;">&uarr; Back to top</a>
         </div>
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
+    </div>
+</div>
