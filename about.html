@@ -9,56 +9,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Scoped styles for this page only — prefixed "pm-" so they never collide with styles.css */
-        .pm-cube-scene {
-            width: 140px;
-            height: 140px;
-            margin: 28px auto 8px;
-            perspective: 800px;
-        }
-        .pm-cube {
-            width: 100%;
-            height: 100%;
+        /*
+          Scoped styles for this page only, prefixed "pm-" so nothing collides
+          with the site-wide styles.css. Concept: the page reads as a running
+          route — a vertical line with distance markers — instead of a grid
+          of boxes. 42.195 km, start to finish, matches the marathon theme.
+        */
+
+        .pm-route {
             position: relative;
-            transform-style: preserve-3d;
-            animation: pm-spin 16s linear infinite;
-        }
-        .pm-cube-scene:hover .pm-cube,
-        .pm-cube-scene:focus-within .pm-cube {
-            animation-play-state: paused;
-        }
-        .pm-face {
-            position: absolute;
-            width: 140px;
-            height: 140px;
             display: flex;
+            flex-direction: column;
+            gap: 72px;
+            padding: 40px 0 24px;
+        }
+
+        .pm-route::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                var(--neon) 8%,
+                var(--neon) 92%,
+                transparent
+            );
+            opacity: 0.55;
+        }
+
+        .pm-stop {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 64px 1fr;
+            align-items: center;
+            gap: 0 24px;
+        }
+
+        .pm-stop--left  .pm-panel { grid-column: 1; }
+        .pm-stop--right .pm-panel { grid-column: 3; }
+        .pm-marker { grid-column: 2; }
+
+        .pm-marker {
+            justify-self: center;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            border: 2px solid var(--neon);
+            background: #05070a;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 12px;
             font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 0.02em;
             color: var(--neon);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--neon);
-            box-shadow: 0 0 12px rgba(0, 255, 140, 0.12) inset;
+            line-height: 1.1;
+            z-index: 2;
+            animation: pm-pulse 3.2s ease-in-out infinite;
         }
-        .pm-face.front  { transform: rotateY(0deg) translateZ(70px); }
-        .pm-face.back   { transform: rotateY(180deg) translateZ(70px); }
-        .pm-face.right  { transform: rotateY(90deg) translateZ(70px); }
-        .pm-face.left   { transform: rotateY(-90deg) translateZ(70px); }
-        .pm-face.top    { transform: rotateX(90deg) translateZ(70px); }
-        .pm-face.bottom { transform: rotateX(-90deg) translateZ(70px); }
+        .pm-marker strong { font-size: 0.72rem; letter-spacing: 0.02em; }
+        .pm-marker small  { font-size: 0.5rem; opacity: 0.7; letter-spacing: 0.03em; }
 
-        .pm-cube-caption {
+        @keyframes pm-pulse {
+            0%, 100% { box-shadow: 0 0 0 4px #05070a, 0 0 10px rgba(0, 255, 140, 0.25); }
+            50%      { box-shadow: 0 0 0 4px #05070a, 0 0 22px rgba(0, 255, 140, 0.55); }
+        }
+
+        .pm-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 28px 8px 28px 8px;
+            padding: 28px 30px;
+            transform: rotate(-0.6deg);
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .pm-stop--left  .pm-panel { border-left: 3px solid var(--neon); }
+        .pm-stop--right .pm-panel {
+            border-radius: 8px 28px 8px 28px;
+            border-right: 3px solid var(--neon);
+            transform: rotate(0.6deg);
+        }
+        .pm-panel:hover {
+            transform: translateY(-4px) rotate(0deg);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+            border-color: var(--neon);
+        }
+
+        .pm-finish-tape {
             text-align: center;
-            font-size: 0.75rem;
-            margin-top: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--neon);
+            letter-spacing: 0.02em;
+            margin-top: -32px;
+            opacity: 0.85;
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .pm-cube { animation: none; }
+            .pm-marker { animation: none; }
+        }
+
+        @media (max-width: 760px) {
+            .pm-route::before { left: 22px; transform: none; }
+            .pm-stop {
+                grid-template-columns: 44px 1fr;
+                gap: 0 16px;
+            }
+            .pm-marker { grid-column: 1; width: 44px; height: 44px; }
+            .pm-marker strong { font-size: 0.62rem; }
+            .pm-stop--left .pm-panel,
+            .pm-stop--right .pm-panel {
+                grid-column: 2;
+                border-radius: 8px 22px 8px 22px;
+                border-left: 3px solid var(--neon);
+                border-right: none;
+                transform: none;
+            }
+            .pm-panel:hover { transform: translateY(-3px); }
         }
     </style>
 </head>
@@ -70,63 +141,47 @@
             <span class="status-pill"><span class="status-dot" style="background: var(--neon); box-shadow: 0 0 6px var(--neon);"></span> Personal Mode</span>
         </div>
 
-        <div class="bento-grid" style="grid-template-columns: 1fr;">
+        <div class="pm-route">
 
-            <!-- Intro: why this page exists -->
-            <div class="bento-card">
-                <div class="card-content">
-                    <div class="layout-split">
-                        <div class="text-block">
-                            <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
-                            <p class="text-muted" style="margin-top: 12px;">The main page runs my professional build. This one is the source behind it — why Dublin, what gets me out the door before sunrise, and the parts of me a CV never has room for. Still Mario, just off the clock.</p>
+            <!-- KM 0 — Intro -->
+            <div class="pm-stop pm-stop--left">
+                <span class="pm-marker"><strong>KM 0</strong><small>START</small></span>
+                <div class="pm-panel">
+                    <h2><span class="text-neon">&gt;</span> Personal_Mode.exe</h2>
+                    <p class="text-muted" style="margin-top: 12px;">The main page runs my professional build. This one is the source behind it — why Dublin, what gets me out the door before sunrise, and the parts of me a CV never has room for. Still Mario, just off the clock.</p>
+
+                    <div class="terminal-widget" style="margin-top: 20px;">
+                        <div class="term-header">
+                            <span class="term-btn close"></span>
+                            <span class="term-btn min"></span>
+                            <span class="term-btn max"></span>
                         </div>
-                        <div class="visual-block">
-                            <div class="terminal-widget">
-                                <div class="term-header">
-                                    <span class="term-btn close"></span>
-                                    <span class="term-btn min"></span>
-                                    <span class="term-btn max"></span>
-                                </div>
-                                <div class="term-body">
-                                    <ul class="term-list">
-                                        <li><span class="text-muted">> Location:</span> Dublin, IE</li>
-                                        <li><span class="text-muted">> Next_Goal:</span> 46km Trail Ultra</li>
-                                        <li><span class="text-muted">> Current_State:</span> Exploring & Training</li>
-                                        <li><span class="text-muted">> Note:</span> Character compiles one kilometre at a time.</li>
-                                    </ul>
-                                    <p class="cursor-line"><span class="text-neon">marioo.macias</span><span class="text-muted">:~$</span> <span class="cursor">_</span></p>
-                                </div>
-                            </div>
-
-                            <!-- Core facets — hover/focus to pause the rotation -->
-                            <div class="pm-cube-scene" tabindex="0" aria-label="Core facets: Dublin, IT, Marathons, Consistency, Curiosity, Growth">
-                                <div class="pm-cube">
-                                    <div class="pm-face front">Dublin</div>
-                                    <div class="pm-face back">IT</div>
-                                    <div class="pm-face right">Marathons</div>
-                                    <div class="pm-face left">Consistency</div>
-                                    <div class="pm-face top">Curiosity</div>
-                                    <div class="pm-face bottom">Growth</div>
-                                </div>
-                            </div>
-                            <p class="text-muted pm-cube-caption">// six faces, one build</p>
+                        <div class="term-body">
+                            <ul class="term-list">
+                                <li><span class="text-muted">> Location:</span> Dublin, IE</li>
+                                <li><span class="text-muted">> Next_Goal:</span> 46km Trail Ultra</li>
+                                <li><span class="text-muted">> Current_State:</span> Exploring & Training</li>
+                            </ul>
+                            <p class="cursor-line"><span class="text-neon">marioo.macias</span><span class="text-muted">:~$</span> <span class="cursor">_</span></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Why Dublin / Personal Journey -->
-            <div class="bento-card">
-                <div class="card-content">
+            <!-- KM 5 — Why Dublin -->
+            <div class="pm-stop pm-stop--right">
+                <span class="pm-marker"><strong>KM 5</strong></span>
+                <div class="pm-panel">
                     <h2><span class="text-neon">&gt;</span> Éire</h2>
                     <p class="text-muted" style="margin-top: 12px;">A year and a half ago I made the boldest call of my life: I packed a bag and moved from Spain to Ireland completely on my own — no safety net, no contacts, no plan B.</p>
                     <p class="text-muted" style="margin-top: 12px;">Starting from zero taught me more about resilience than any manual could. I learned a new language, built a routine, and earned my independence early. I chose to put down roots in Dublin because it's one of Europe's real tech hubs — the kind of place where the people around you push you to get better, not just get by.</p>
                 </div>
             </div>
 
-            <!-- Marathons & exploring -->
-            <div class="bento-card">
-                <div class="card-content">
+            <!-- KM 21 — Marathons & exploring -->
+            <div class="pm-stop pm-stop--left">
+                <span class="pm-marker"><strong>KM 21</strong><small>Halfway</small></span>
+                <div class="pm-panel">
                     <h2><span class="text-neon">&gt;</span> Marathons_and_The_Long_Way_Round</h2>
                     <p class="text-muted" style="margin-top: 12px;">Technical skills can be taught. What can't be taught is showing up — for the early run, the long shift, the problem that doesn't get solved on the first try. Endurance sport is where I built that habit.</p>
                     <ul class="bullet-list" style="margin-top: 15px;">
@@ -137,7 +192,7 @@
 
                     <!-- Photo gallery: replace the src values below with your real photos
                          (e.g. in assets/images/marathons/) -->
-                    <div class="photo-gallery">
+                    <div class="photo-gallery" style="margin-top: 20px;">
                         <div class="photo-frame">
                             <img src="assets/images/marathons/race-1.jpg" alt="Mario running a marathon" loading="lazy">
                             <p class="photo-caption">// add caption — e.g. Dublin Marathon 2026</p>
@@ -154,9 +209,10 @@
                 </div>
             </div>
 
-            <!-- Interactive Section: Discover More -->
-            <div class="bento-card">
-                <div class="card-content text-center">
+            <!-- KM 35 — System attributes -->
+            <div class="pm-stop pm-stop--right">
+                <span class="pm-marker"><strong>KM 35</strong><small>The Wall</small></span>
+                <div class="pm-panel text-center">
                     <h2><span class="text-neon">🧠</span> &gt; System_Attributes</h2>
                     <p class="text-muted" style="margin-top: 12px; margin-bottom: 5px;">Hover over the encrypted blocks to decrypt the traits that don't show up in a job description.</p>
 
@@ -181,12 +237,13 @@
                 </div>
             </div>
 
-            <!-- Personal social -->
-            <div class="bento-card">
-                <div class="card-content text-center">
+            <!-- KM 42 — Off the clock / social -->
+            <div class="pm-stop pm-stop--left">
+                <span class="pm-marker"><strong>KM 42</strong><small>Finish</small></span>
+                <div class="pm-panel text-center">
                     <h2><span class="text-neon">📷</span> &gt; Off_The_Clock</h2>
                     <p class="text-muted" style="margin-top: 12px;">Races, training blocks, and everyday life in Dublin — mostly documented one photo at a time:</p>
-                    <div class="personal-links" style="justify-content: center;">
+                    <div class="personal-links" style="justify-content: center; margin-top: 10px;">
                         <!-- Replace the href with your real Instagram handle -->
                         <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer" class="btn-cyan">Instagram &rarr;</a>
                     </div>
@@ -194,6 +251,9 @@
             </div>
 
         </div>
+
+        <p class="pm-finish-tape">🏁 42.195 KM — Personal_Mode.exe compiled successfully</p>
+
     </main>
     <script src="script.js"></script>
 </body>
